@@ -1,0 +1,50 @@
+.inline-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.inline-form {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 30px;
+    border-radius: 0px;
+    background-color: #d8d0dd;
+    background-image: url('./wiki.png');
+    background-size: 100%;
+    background-position: center; 
+}
+
+.inline-form label {
+    color: rgb(0, 0, 0); 
+    margin-bottom: 10px;
+}
+
+.inline-input {
+    width: 200px;
+    padding: 8px;
+    margin-bottom: 0px;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 10px;
+}
+
+.inline-button {
+    background-color: rgb(107, 49, 182);
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 12px;
+    cursor: pointer;
+}
+
+.inline-button:hover {
+    background-color: #611097;
+}
+
+.finding-route {
+    text-align: center;
+}

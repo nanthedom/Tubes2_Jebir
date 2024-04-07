@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './FormInput.css';
 
 const FormInput = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -20,35 +21,34 @@ const FormInput = ({ onSubmit }) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="inline-form">
         <label>
-          Start Article:
+          Start <br/>
           <input
             type="text"
             name="startArticle"
             value={formData.startArticle}
             onChange={handleChange}
+            className="inline-input"
           />
         </label>
-        <br />
         <label>
-          End Article:
+          End <br/>
           <input
             type="text"
             name="endArticle"
             value={formData.endArticle}
             onChange={handleChange}
+            className="inline-input"
           />
         </label>
-        <br />
-        <button type="submit">Start Game</button>
+        <button type="submit" className="inline-button">Find!</button>
       </form>
 
       {submittedData && (
-        <div>
-          <h2>Submitted Data:</h2>
-          <p>Start Article: {submittedData.startArticle}</p>
-          <p>End Article: {submittedData.endArticle}</p>
+        <div className="finding-route">
+          <h2>Finding Route:</h2>
+          <p>{submittedData.startArticle} To {submittedData.endArticle}</p>
         </div>
       )}
     </div>
