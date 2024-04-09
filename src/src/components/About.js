@@ -3,7 +3,7 @@ import React from "react";
 function About() {
     return (
         <div>
-            <h1>About Jebir Wikirace (contoh)</h1>
+            <h1 className="page-title">About Jebir Wikirace (contoh)</h1>
             <p>
                 Jebir Wikirace adalah website application yang memungkinkan pengguna untuk mencari rute terpendek antara dua artikel Wikipedia. Website ini dibuat oleh kelompok Jebir dengan anggota:
             </p>

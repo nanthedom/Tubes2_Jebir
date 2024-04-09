@@ -1,29 +1,52 @@
 import React from "react";
+import './styles.css';
 
 function HowToUse() {
     return (
         <div>
-            <h1>How To Use Jebir Wikirace (contoh)</h1>
-            <p>
-                Jebir Wikirace adalah aplikasi yang memungkinkan pengguna untuk mencari rute terpendek antara dua artikel Wikipedia. Berikut cara penggunaan Jebir Wikirace:
-            </p>
-            <ol>
-                <li>
-                    Masukkan judul artikel Wikipedia awal pada kolom "Start".
-                </li>
-                <li>
-                    Masukkan judul artikel Wikipedia tujuan pada kolom "End".
-                </li>
-                <li>
-                    Klik tombol "Find!" untuk mencari rute terpendek.
-                </li>
-                <li>
-                    Hasil pencarian akan ditampilkan pada layar.
-                </li>
-            </ol>
-
-            <h2>Contoh Penggunaan . . .</h2>
-            
+            <h1 className="page-title">How To Use Jebir Wikirace (contoh)</h1>
+            <div className="mid-container">
+                <div className="step">
+                    <div className="container-2">
+                        <span className="number">
+                        1
+                        </span>
+                    </div>
+                    <div className="step-text">
+                        Masukkan judul artikel Wikipedia awal pada kolom "Start".
+                    </div>
+                </div>
+                <div className="step-1">
+                    <div className="container-3">
+                        <span className="number-1">
+                        2
+                        </span>
+                    </div>
+                    <div className="step-text-1">
+                        Masukkan judul artikel Wikipedia tujuan pada kolom "End".
+                    </div>
+                </div>
+                <div className="step-2">
+                    <div className="container-1">
+                        <span className="number-2">
+                        3
+                        </span>
+                    </div>
+                    <div className="step-text-2">
+                        Masukkan judul artikel Wikipedia awal pada kolom "Start".
+                    </div>
+                </div>
+                <div className="step-3">
+                    <div className="container">
+                        <span className="number-3">
+                        4
+                        </span>
+                    </div>
+                    <div className="step-text-3">
+                        Hasil pencarian akan ditampilkan pada layar.
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

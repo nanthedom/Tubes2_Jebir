@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+body {
+    font-family: 'Poppins', sans-serif; 
+}
+
+/* How To Use */
+.page-title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: #6d5e8d;
+}
+
+.page-content {
+    padding: 20px;
+    padding-inline: x;
+    margin: 20px;
+    border: 1px solid #6d5e8d;
+    border-radius: 10px;
+    background-color: #f8f8f8;
+
+}
+
+.step {
+    border-radius: 45px;
+    background: #6D5E8D;
+    position: relative;
+    margin: 0 180px 21.9px 0;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    padding: 11.7px 0 10.8px 12.6px;
+    width: 724.5px;
+    box-sizing: border-box;
+}
+.step-text {
+    margin: 18px 0 17.6px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.number {
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 21px;
+    color: #6D5E8D;
+}
+.step-1 {
+    border-radius: 45px;
+    background: #6D5E8D;
+    position: relative;
+    margin: 0 100px 21.9px 0;
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+    padding: 11.7px 0 10.8px 12.6px;
+    width: 724.5px;
+    box-sizing: border-box;
+}
+.step-text-1 {
+    margin: 18px 0 17.6px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.number-1 {
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 21px;
+    color: #6D5E8D;
+}
+.step-2 {
+    border-radius: 45px;
+    background: #6D5E8D;
+    position: relative;
+    margin: 0 100px 21.9px 70px;
+    display: flex;
+    flex-direction: row;
+    padding: 11.7px 0 10.8px 12.6px;
+    width: 724.5px;
+    box-sizing: border-box;
+}
+.step-text-2 {
+    margin: 18px 0 17.6px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.number-2 {
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 21px;
+    color: #6D5E8D;
+}
+.step-3 {
+    border-radius: 45px;
+    background: #6D5E8D;
+    position: relative;
+    margin: 0 60px 21.9px 70px;
+    display: flex;
+    flex-direction: row;
+    padding: 11.7px 0 10.8px 12.6px;
+    width: 724.5px;
+    box-sizing: border-box;
+}
+.step-text-3 {
+    margin: 18px 0 17.6px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.number-3 {
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 21px;
+    color: #6D5E8D;
+}
+.definition-shape {
+    border-radius: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 508px;
+    height: 386px;
+}
+.how-to-use-jebir-wikirace {
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 50px;
+    color: #FFFFFF;
+}
+.definition-text {
+    position: absolute;
+    left: 28px;
+    top: 33px;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.mid-container {
+    position: relative;
+    margin: 0 86.5px 0 86px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: fit-content;
+    box-sizing: border-box;
+}
+.container {
+    border-radius: 28.8px;
+    background: #D9D9D9;
+    position: relative;
+    margin-right: 17.1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 16.2px 0 16.4px 1.6px;
+    width: 57.6px;
+    height: fit-content;
+    box-sizing: border-box;
+}
+.container-1 {
+    border-radius: 28.8px;
+    background: #D9D9D9;
+    position: relative;
+    margin-right: 17.1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 16.2px 0 16.4px 1.2px;
+    width: 57.6px;
+    height: fit-content;
+    box-sizing: border-box;
+}
+.container-2 {
+    border-radius: 28.8px;
+    background: #D9D9D9;
+    position: relative;
+    margin-right: 17.1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 16.2px 2.3px 16.4px 0;
+    width: 57.6px;
+    height: fit-content;
+    box-sizing: border-box;
+}
+.container-3 {
+    border-radius: 28.8px;
+    background: #D9D9D9;
+    position: relative;
+    margin-right: 17.1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 16.2px 0 16.4px 0.6px;
+    width: 57.6px;
+    height: fit-content;
+    box-sizing: border-box;
+}
+.container-4 {
+    border-radius: 0 0 50px 50px;
+    background: #6D5E8D;
+    position: relative;
+    margin-bottom: 172px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 64px 1px 64px 0;
+    width: 1440px;
+    box-sizing: border-box;
+}
