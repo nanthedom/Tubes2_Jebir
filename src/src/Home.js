@@ -29,8 +29,8 @@ function App() {
         <a href="#default" className="logo">Jebir Wikirace</a>
         <div className="header-right">
           <a className="active" href="#home">Home</a>
-          <a href="#contact">How-To Use</a>
-          <a href="#about">About</a>
+          <a href="/how-to-use">How-To Use</a>
+          <a href="/about">About</a>
         </div>
       </div>
       <div className="FormInput">
