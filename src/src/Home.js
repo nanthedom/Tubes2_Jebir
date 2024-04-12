@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import Header from './components/Header';
 import FormInput from './components/FormInput';
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         },
         body: JSON.stringify(formData)
       });
-      
+
       if (!response.ok) {
         throw new Error('Failed to save data');
       }
@@ -25,16 +25,11 @@ function App() {
 
   return (
     <div>
-      <div className="header">
-        <a href="#default" className="logo">Jebir Wikirace</a>
-        <div className="header-right">
-          <a className="active" href="#home">Home</a>
-          <a href="/how-to-use">How-To Use</a>
-          <a href="/about">About</a>
-        </div>
+      <div>
+        <Header />
       </div>
       <div className="FormInput">
-          <FormInput onSubmit={handleSubmit} />
+        <FormInput onSubmit={handleSubmit} />
       </div>
     </div>
   );

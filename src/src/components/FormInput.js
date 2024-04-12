@@ -23,7 +23,7 @@ const FormInput = ({ onSubmit }) => {
     <div>
       <form onSubmit={handleSubmit} className="inline-form">
         <label>
-          Start <br/>
+          Start <br />
           <input
             type="text"
             name="startArticle"
@@ -33,7 +33,7 @@ const FormInput = ({ onSubmit }) => {
           />
         </label>
         <label>
-          End <br/>
+          End <br />
           <input
             type="text"
             name="endArticle"
