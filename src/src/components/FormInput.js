@@ -120,9 +120,21 @@ const FormInput = ({ onSubmit }) => {
             )}
           </div>
         </label>
+        <label>
+          Algoritma <br />
+          <select
+            name="endArticle"
+            // value={formData.endArticle}
+            // onChange={handleChange}
+            className="inline-input"
+          >
+            <option value="BFS">BFS</option>
+            <option value="IDS">IDS</option>
+          </select>
+        </label>
         <button type="submit" className="inline-button">Find!</button>
       </form>
-
+      
       {submittedData && (
         <div className="finding-route">
           {(formData.endArticle.length === 0 || formData.startArticle.length === 0) ? (
