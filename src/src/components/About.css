@@ -1,0 +1,86 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+}
+
+.anggota-container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #6d5e8d;
+    /* border-radius: 10px; */
+}
+
+.anggota-wrapper {
+    /* width: 500px;   */
+    text-align: center;
+    position: relative;
+}
+
+.anggota-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.nama-anggota {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 500;
+    color: aliceblue;
+}
+
+.nim-anggota {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px;
+    color: aliceblue;
+}
+
+
+
+
+
+
+
+/* 
+.anggota-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.anggota-wrapper {
+text-align: center;
+margin: 0 10px; 
+}
+
+.gambar-anggota {
+width: 150px;
+height: auto; 
+border-radius: 50%; 
+}
+
+.nama-anggota {
+margin-top: 10px;
+font-weight: bold;
+}
+
+.nim-anggota {
+font-size: 14px; 
+color: #888; 
+}
+*/
