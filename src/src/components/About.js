@@ -19,6 +19,7 @@ function About() {
                 <p className="content">
                     Website ini merupakan realisasi atas Tugas Besar II Strategi Algoritma (IF2211). Dibuat oleh kelompok Jebir dengan anggota:
                 </p>
+                <div className="blank"></div>
                 <div className="anggota-container">
                     <div className="anggota-wrapper">
                         <div className="nama-anggota">Muhammad Naufal Aulia</div>
