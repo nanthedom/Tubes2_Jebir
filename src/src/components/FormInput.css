@@ -13,7 +13,7 @@
     padding: 30px;
     border-radius: 0px;
     background-color: #d8d0dd;
-    background-image: url('./assets/wiki.png');
+    background-image: url('./assets/wiki2.png');
     background-size: 100%;
     background-position: center;
 }
@@ -30,6 +30,7 @@
     color: rgb(0, 0, 0);
     border: none;
     border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(109, 94, 141, 0.555);
 }
 
 .inline-button {
@@ -39,6 +40,7 @@
     border-radius: 20px;
     padding: 10px 12px;
     cursor: pointer;
+    box-shadow: 0px 8px 20px rgba(109, 94, 141, 0.555);
 }
 
 .inline-button:hover {
@@ -61,6 +63,7 @@
     background-color: #dcc9f1;
     border: 5px solid #ffffff;
     border-top: none;
+    text-align: center;
 }
 
 .suggestion:hover {

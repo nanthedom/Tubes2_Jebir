@@ -128,8 +128,8 @@ const FormInput = ({ onSubmit }) => {
             // onChange={handleChange}
             className="inline-input"
           >
-            <option value="BFS">BFS</option>
-            <option value="IDS">IDS</option>
+            <option className="suggestion" value="BFS">BFS</option>
+            <option className="suggestion" value="IDS">IDS</option>
           </select>
         </label>
         <button type="submit" className="inline-button">Find!</button>
