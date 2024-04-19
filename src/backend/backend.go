@@ -5,4 +5,5 @@ type FormData struct {
 	StartUrl     string `json:"startUrl"`
 	EndArticle   string `json:"endArticle"`
 	EndUrl       string `json:"endUrl"`
+	Algoritma    string `json:"algoritma"`
 }

@@ -44,6 +44,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("Start Url: %s\n", formData.StartUrl)
 	fmt.Printf("End Article: %s\n", formData.EndArticle)
 	fmt.Printf("End Url: %s\n", formData.EndUrl)
+	fmt.Printf("Algoritma: %s\n", formData.Algoritma)
 
 	responseData := struct {
 		Message      string `json:"message"`
@@ -51,12 +52,14 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		EndArticle   string `json:"endArticle"`
 		StartUrl     string `json:"startUrl"`
 		EndUrl       string `json:"endUrl"`
+		Algoritma    string `json:"algoritma"`
 	}{
 		Message:      "Received data successfully",
 		StartArticle: formData.StartArticle,
 		EndArticle:   formData.EndArticle,
 		StartUrl:     formData.StartUrl,
 		EndUrl:       formData.EndUrl,
+		Algoritma:    formData.Algoritma,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

@@ -6,7 +6,8 @@ const FormInput = ({ onSubmit }) => {
     startArticle: '',
     startUrl: '',
     endArticle: '',
-    endUrl: ''
+    endUrl: '',
+    algoritma: ''
   });
 
   const [submittedData, setSubmittedData] = useState(null);
@@ -123,9 +124,9 @@ const FormInput = ({ onSubmit }) => {
         <label>
           Algoritma <br />
           <select
-            name="endArticle"
-            // value={formData.endArticle}
-            // onChange={handleChange}
+            name="algoritma"
+            value={formData.algoritma}
+            onChange={handleChange}
             className="inline-input"
           >
             <option className="suggestion" value="BFS">BFS</option>
