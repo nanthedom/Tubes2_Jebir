@@ -8,7 +8,7 @@ function HowToUse() {
             <div>
                 <Header />
             </div>
-            <h1 className="page-title">How To Use Jebir Wikirace (contoh)</h1>
+            <h1 className="page-title">How To Use Jebir Wikirace</h1>
             <div className="mid-container">
                 <div className="step">
                     <div className="container-2">
@@ -37,7 +37,7 @@ function HowToUse() {
                         </span>
                     </div>
                     <div className="step-text-2">
-                        Masukkan judul artikel Wikipedia awal pada kolom "Start".
+                        Pilih algoritma pencarian yang ingin digunakan.
                     </div>
                 </div>
                 <div className="step-3">
@@ -47,6 +47,16 @@ function HowToUse() {
                         </span>
                     </div>
                     <div className="step-text-3">
+                        Tekan tombol "Find!" untuk melakukan pencarian.
+                    </div>
+                </div>
+                <div className="step-4">
+                    <div className="container">
+                        <span className="number-4">
+                            5
+                        </span>
+                    </div>
+                    <div className="step-text-4">
                         Hasil pencarian akan ditampilkan pada layar.
                     </div>
                 </div>

@@ -10,8 +10,6 @@ body {
     font-size: 2rem;
     font-weight: bold;
     text-align: center;
-    padding-top: 25px;
-    padding-bottom: 25px;
     color: #6d5e8d;
 }
 
@@ -127,6 +125,31 @@ body {
     font-size: 21px;
     color: #6D5E8D;
 }
+.step-4 {
+    border-radius: 45px;
+    background: #6D5E8D;
+    position: relative;
+    margin: 0 10px 21.9px 70px;
+    display: flex;
+    flex-direction: row;
+    padding: 11.7px 0 10.8px 12.6px;
+    width: 724.5px;
+    box-sizing: border-box;
+}
+.step-text-4 {
+    margin: 18px 0 17.6px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-weight: 400;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+.number-4 {
+    overflow-wrap: break-word;
+    font-weight: 700;
+    font-size: 21px;
+    color: #6D5E8D;
+}
 .definition-shape {
     border-radius: 30px;
     position: absolute;
@@ -223,4 +246,24 @@ body {
     padding: 64px 1px 64px 0;
     width: 1440px;
     box-sizing: border-box;
+}
+
+/* Media query untuk layar smartphone */
+@media screen and (max-width: 767px) {
+    .step,
+    .step-1,
+    .step-2,
+    .step-3,
+    .step-4 {
+        font-size: 14px; /* Atur ukuran font yang lebih kecil untuk langkah-langkah pada layar smartphone */
+        width: auto; /* Set lebar agar disesuaikan dengan konten di dalamnya */
+        margin-right: 10px; /* Beri sedikit ruang antar langkah pada layar smartphone */
+    }
+    .container,
+    .container-1,
+    .container-2,
+    .container-3,
+    .container-4 {
+        border-radius: 49%; /* Mengatur border radius agar bentuknya menjadi lingkaran */
+    }
 }
