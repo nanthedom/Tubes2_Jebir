@@ -19,13 +19,16 @@ type Node struct {
 }
 
 // BFS
-func BFS(startURL, targetURL string) ([]*Node, error) {
+func BFS(startURL, targetURL string) ([]*Node, int, int, error) {
 	visited := make(map[string]bool)
 	var pathToTarget []*Node
+	var articlesChecked, articlesTraversed int
 
 	startTitle := strings.TrimPrefix(startURL, "https://en.wikipedia.org/wiki/")
 
 	queue := []*Node{{Title: startTitle, URL: startURL}}
+
+	articlesChecked++
 
 	for len(queue) > 0 {
 		node := queue[0]
@@ -37,30 +40,33 @@ func BFS(startURL, targetURL string) ([]*Node, error) {
 
 		visited[node.URL] = true
 
+		articlesTraversed++
+
 		if node.URL == targetURL {
 			pathToTarget = buildPathToTarget(node)
-			return pathToTarget, nil
+			return pathToTarget, articlesChecked, articlesTraversed, nil
 		}
 
 		neighbors, err := getNeighborsFromURL(node.URL)
 		if err != nil {
-			return nil, err
+			return nil, articlesChecked, articlesTraversed, err
 		}
 
 		for _, neighbor := range neighbors {
 			if neighbor.URL == targetURL {
-				return buildPathToTarget(&Node{Title: neighbor.Title, URL: targetURL, Parent: node}), nil
+				return buildPathToTarget(&Node{Title: neighbor.Title, URL: targetURL, Parent: node}), articlesChecked, articlesTraversed, nil
 			}
 
 			neighbor.Parent = node
 			node.Children = append(node.Children, neighbor)
 			if !visited[neighbor.URL] {
 				queue = append(queue, neighbor)
+				articlesChecked++
 			}
 		}
 	}
 
-	return nil, fmt.Errorf("path not found")
+	return nil, articlesChecked, articlesTraversed, fmt.Errorf("path not found")
 }
 
 // Ekstrak neighbors dari URL Wikipedia
@@ -108,9 +114,12 @@ func main() {
 	startURL := "https://en.wikipedia.org/wiki/French-suited_playing_cards"
 	targetURL := "https://en.wikipedia.org/wiki/Indian_Premier_League"
 
+	// startURL := "https://en.wikipedia.org/wiki/Physics"
+	// targetURL := "https://en.wikipedia.org/wiki/Indian_Premier_League"
+
 	startTime := time.Now()
 
-	path, err := BFS(startURL, targetURL)
+	path, articlesChecked, articlesTraversed, err := BFS(startURL, targetURL)
 
 	elapsed := time.Since(startTime)
 
@@ -118,10 +127,12 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println("\nPath from", startURL, "to", targetURL, "is:")
+	fmt.Println("\nPath dari", startURL, "ke", targetURL, "adalah:")
 	for i, node := range path {
 		fmt.Println(i+1, ".", node.Title, ":", node.URL)
 	}
 
-	fmt.Println("Execution time:", elapsed)
+	fmt.Println("\nArtikel diperiksa:", articlesChecked)
+	fmt.Println("Artikel dikunjungi:", articlesTraversed)
+	fmt.Println("Waktu eksekusi:", elapsed)
 }
