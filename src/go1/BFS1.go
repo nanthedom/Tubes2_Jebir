@@ -7,18 +7,106 @@ import (
 	"strings"
 	"time"
 
-	"golang.org/x/net/html"
+	"github.com/PuerkitoBio/goquery"
 )
 
-// Node represents a Wikipedia article node
+// Node untuk artikel Wikipedia
 type Node struct {
-	Title string
-	URL   string
+	Title    string
+	URL      string
+	Parent   *Node
+	Children []*Node
+}
+
+// BFS
+func BFS(startURL, targetURL string) ([]*Node, error) {
+	visited := make(map[string]bool)
+	var pathToTarget []*Node
+
+	startTitle := strings.TrimPrefix(startURL, "https://en.wikipedia.org/wiki/")
+
+	queue := []*Node{{Title: startTitle, URL: startURL}}
+
+	for len(queue) > 0 {
+		node := queue[0]
+		queue = queue[1:]
+
+		if visited[node.URL] {
+			continue
+		}
+
+		visited[node.URL] = true
+
+		if node.URL == targetURL {
+			pathToTarget = buildPathToTarget(node)
+			return pathToTarget, nil
+		}
+
+		neighbors, err := getNeighborsFromURL(node.URL)
+		if err != nil {
+			return nil, err
+		}
+
+		for _, neighbor := range neighbors {
+			if neighbor.URL == targetURL {
+				return buildPathToTarget(&Node{Title: neighbor.Title, URL: targetURL, Parent: node}), nil
+			}
+
+			neighbor.Parent = node
+			node.Children = append(node.Children, neighbor)
+			if !visited[neighbor.URL] {
+				queue = append(queue, neighbor)
+			}
+		}
+	}
+
+	return nil, fmt.Errorf("path not found")
+}
+
+// Ekstrak neighbors dari URL Wikipedia
+func getNeighborsFromURL(URL string) ([]*Node, error) {
+	res, err := http.Get(URL)
+	if err != nil {
+		return nil, err
+	}
+	defer res.Body.Close()
+
+	if res.StatusCode != 200 {
+		return nil, fmt.Errorf("failed to retrieve URL: %s", res.Status)
+	}
+
+	doc, err := goquery.NewDocumentFromReader(res.Body)
+	if err != nil {
+		return nil, err
+	}
+
+	neighbors := []*Node{}
+	doc.Find("a").Each(func(i int, s *goquery.Selection) {
+		href, exists := s.Attr("href")
+		if exists && strings.HasPrefix(href, "/wiki/") {
+			neighborURL := "https://en.wikipedia.org" + href
+			neighborTitle := strings.TrimPrefix(href, "/wiki/")
+			neighbors = append(neighbors, &Node{Title: neighborTitle, URL: neighborURL})
+		}
+	})
+
+	return neighbors, nil
+}
+
+// Membuat rute penjelajahan
+func buildPathToTarget(target *Node) []*Node {
+	var path []*Node
+	current := target
+	for current != nil {
+		path = append([]*Node{current}, path...)
+		current = current.Parent
+	}
+	return path
 }
 
 func main() {
-	startURL := "https://en.wikipedia.org/wiki/Artificial_intelligence"
-	targetURL := "https://en.wikipedia.org/wiki/Power_(physics)"
+	startURL := "https://en.wikipedia.org/wiki/French-suited_playing_cards"
+	targetURL := "https://en.wikipedia.org/wiki/Indian_Premier_League"
 
 	startTime := time.Now()
 
@@ -30,107 +118,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	// print path dengan penomoran
 	fmt.Println("\nPath from", startURL, "to", targetURL, "is:")
 	for i, node := range path {
 		fmt.Println(i+1, ".", node.Title, ":", node.URL)
 	}
 
 	fmt.Println("Execution time:", elapsed)
-}
-
-func BFS(startURL, targetURL string) ([]Node, error) {
-	visited := make(map[string]bool)
-	visitedNodes := make(map[string]Node)
-	queue := []Node{{"Start", startURL}}
-
-	// Simpan jalur yang ditemukan
-	var path []Node
-
-	for len(queue) > 0 {
-		node := queue[0]
-		queue = queue[1:]
-
-		// // print node
-		// fmt.Println("Visiting:", node.Title, ":", node.URL)
-
-		// tandai node sebagai sudah dikunjungi
-		visited[node.URL] = true
-
-		// cek apakah node saat ini adalah target
-		if node.URL == targetURL {
-			// Salin jalur yang ditemukan dari target ke awal
-			for node.URL != startURL {
-				path = append([]Node{node}, path...)
-				node = visitedNodes[node.URL]
-			}
-			path = append([]Node{{"Start", startURL}}, path...)
-			return path, nil
-		}
-
-		// dapatkan tetangga-tetangga dari node saat ini
-		neighbors, err := getNeighborsFromURL(node.URL)
-		if err != nil {
-			return nil, err
-		}
-
-		// Lakukan pengecekan apakah salah satu tetangga adalah target node
-		for _, neighbor := range neighbors {
-			if neighbor.URL == targetURL {
-				// Jika tetangga adalah target node, tambahkan target node ke jalur terpendek
-				path = append(path, node)
-				path = append(path, neighbor)
-				return path, nil
-			}
-		}
-
-		// Tambahkan tetangga yang belum dikunjungi ke dalam queue
-		for _, neighbor := range neighbors {
-			if !visited[neighbor.URL] {
-				queue = append(queue, neighbor)
-				// Simpan node sebelumnya untuk setiap tetangga
-				visitedNodes[neighbor.URL] = node
-			}
-		}
-	}
-
-	return nil, fmt.Errorf("path not found")
-}
-
-// scrapping dari wikipedia
-func getNeighborsFromURL(URL string) ([]Node, error) {
-	// Retrieve konten HTML
-	resp, err := http.Get(URL)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	// Parse HTML
-	doc, err := html.Parse(resp.Body)
-	if err != nil {
-		return nil, err
-	}
-
-	// Ekstrak URL neighbors
-	var neighbors []Node
-	var extractURL func(*html.Node)
-	extractURL = func(n *html.Node) {
-		if n.Type == html.ElementNode && n.Data == "a" {
-			for _, attr := range n.Attr {
-				if attr.Key == "href" && strings.HasPrefix(attr.Val, "/wiki/") {
-					neighborURL := "https://en.wikipedia.org" + attr.Val
-					neighborTitle := strings.TrimPrefix(attr.Val, "/wiki/")
-					neighbors = append(neighbors, Node{Title: neighborTitle, URL: neighborURL})
-					break
-				}
-			}
-		}
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			extractURL(c)
-		}
-	}
-	extractURL(doc)
-
-	return neighbors, nil
 }
