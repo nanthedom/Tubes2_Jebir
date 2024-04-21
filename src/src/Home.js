@@ -36,7 +36,7 @@ function App() {
         <FormInput onSubmit={handleSubmit} />
       </div>
       <div> 
-        <Result formData={formData} />
+        {formData && <Result formData={formData} />} {/* Conditionally render Result component */}
       </div>
     </div>
   );
