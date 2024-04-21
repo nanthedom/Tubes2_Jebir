@@ -32,9 +32,9 @@ function App() {
       <div className="FormInput">
         <FormInput onSubmit={handleSubmit} />
       </div>
-      {/* <div> 
+      <div> 
         <Result />
-      </div> */}
+      </div>
     </div>
   );
 }

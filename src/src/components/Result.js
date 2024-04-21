@@ -1,50 +1,37 @@
-// import React, { useState, useEffect } from 'react';
-// import './Result.css';
+import React, { useState, useEffect } from 'react';
+import './Result.css';
 
-// const Result = ({ result }) => {
-//     const [path, setPath] = useState([]);
-//     const [loading, setLoading] = useState(true);
-    
-//     useEffect(() => {
-//         const fetchPath = async () => {
-//         try {
-//             const response = await fetch('http://localhost:8000/path');
-//             const data = await response.json();
-//             setPath(data.path);
-//             setLoading(false);
-//         } catch (error) {
-//             console.error('Error fetching path:', error);
-//         }
-//         };
-    
-//         fetchPath();
-//     }, []);
-    
-//     return (
-//         <div>
-//             <h2 className="result-title" >Result</h2>
-//             {/* {loading ? (
-//                 <p>Loading...</p>
-//             ) : (
-//                 <ul>
-//                 {path.map((node, index) => (
-//                     <li key={index}>{node}</li>
-//                 ))}
-//                 </ul>
-//             )} */}
-//             <div className="result-container">
-//                 <div className="artikel-diperiksa">
-//                     Artikel diperiksa: 0
-//                 </div>
-//                 <div className="artikel-dilalui">
-//                     Artikel dilalui: 0
-//                 </div>
-//                 <div className="waktu-pencarian">
-//                     Waktu pencarian: 0ms
-//                 </div>
-//             </div>
-//         </div>
-//     );
-// }
+const Result = ({ result }) => {
+    const [checkedArticle, setCheckedArticle] = useState(0);
+    const [clickArticle, setClickArticle] = useState(0);
+    const [excTime, setExcTime] = useState(0);
 
-// export default Result;
+    useEffect(() => {
+        console.log(result); // Tambahkan ini untuk memeriksa nilai result
+        if (result) {
+            setCheckedArticle(result.checkedArticle);
+            setClickArticle(result.clickArticle);
+            setExcTime(result.excTime);
+        }
+    }, [result]);
+    
+
+    return (
+        <div>
+            <h2 className="result-title">Result</h2>
+            <div className="result-container">
+                <div className="artikel-diperiksa">
+                    Artikel diperiksa: {checkedArticle}
+                </div>
+                <div className="artikel-dilalui">
+                    Artikel dilalui: {clickArticle}
+                </div>
+                <div className="waktu-pencarian">
+                    Waktu pencarian: {excTime}ms
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Result;
