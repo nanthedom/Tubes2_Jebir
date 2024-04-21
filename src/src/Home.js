@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/Header';
 import FormInput from './components/FormInput';
+import Result from './components/Result';
 
 function App() {
   const handleSubmit = async (formData) => {
@@ -30,6 +31,9 @@ function App() {
       </div>
       <div className="FormInput">
         <FormInput onSubmit={handleSubmit} />
+      </div>
+      <div> 
+        <Result />
       </div>
     </div>
   );
