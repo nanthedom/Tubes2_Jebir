@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Result.css';
+import GraphVisualization from './GraphVisualization';
 
 const Result = ({ formData }) => {
     const [checkedArticle, setCheckedArticle] = useState(0);
@@ -11,7 +12,6 @@ const Result = ({ formData }) => {
         const fetchData = async () => {
             if (formData) {
                 try {
-                    // Make API request with full URLs
                     const response = await fetch('http://localhost:8000/', {
                         method: 'POST',
                         headers: {
@@ -20,7 +20,6 @@ const Result = ({ formData }) => {
                         body: JSON.stringify(formData),
                     });
                     const data = await response.json();
-                    // Update state based on data received
                     setCheckedArticle(data.checkedArticle);
                     setClickArticle(data.clickArticle);
                     setExcTime(data.excTime);
@@ -32,26 +31,24 @@ const Result = ({ formData }) => {
             }
         };
 
-        fetchData(); // Call the async function immediately
+        fetchData();
     }, [formData]);
 
     return (
         <div>
             <h2 className="result-title">Result</h2>
             <div className="result-container">
-                <div className="artikel-diperiksa">
-                    Artikel diperiksa: {checkedArticle}
+                <div className="article-checked">
+                    Article checked: {checkedArticle}
                 </div>
-                <div className="artikel-dilalui">
-                    Artikel dilalui: {clickArticle}
+                <div className="article-clicked">
+                    Article clicked: {clickArticle}
                 </div>
-                <div className="waktu-pencarian">
-                    Waktu pencarian: {excTime}
+                <div className="exc-time">
+                    Execution time: {excTime}
                 </div>
-                <div className="paths">
-                    {paths.map((path, index) => (
-                        <div key={index}>{path}</div>
-                    ))}
+                <div className="graph">
+                    <GraphVisualization key={JSON.stringify(paths)} paths={paths} />
                 </div>
             </div>
         </div>

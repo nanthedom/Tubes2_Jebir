@@ -7,7 +7,7 @@ const FormInput = ({ onSubmit }) => {
     startUrl: '',
     endArticle: '',
     endUrl: '',
-    algoritma: ''
+    algoritma: 'BFS'
   });
 
   const [submittedData, setSubmittedData] = useState(null);
