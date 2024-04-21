@@ -52,7 +52,7 @@ const FormInput = ({ onSubmit }) => {
   };
 
   const handleSelectSuggestion = (value, field, urlField, setSelected) => {
-    const encodedValue = encodeURIComponent(value);
+    const encodedValue = value.replace(/ /g, "_");
     setFormData({ ...formData, [field]: value, [urlField]: `https://en.wikipedia.org/wiki/${encodedValue}` });
     field === 'startArticle' ? setStartSuggestions([]) : setEndSuggestions([]);
     setSelected(true);
