@@ -7,10 +7,10 @@ import (
 )
 
 func main() {
-	startURL := "https://en.wikipedia.org/wiki/Joko_Widodo"
-	targetURL := "https://en.wikipedia.org/wiki/Erina_Gudono"
-	// startURL := "a"
-	// targetURL := "g"
+	// startURL := "https://en.wikipedia.org/wiki/Joko_Widodo"
+	// targetURL := "https://en.wikipedia.org/wiki/Erina_Gudono"
+	startURL := "a"
+	targetURL := "h"
 	
 	var pilihan int;
 	fmt.Println("1. BFS")
@@ -38,12 +38,10 @@ func main() {
 		fmt.Println("\nArtikel diperiksa:", articlesChecked)
 		fmt.Println("Artikel dikunjungi:", articlesTraversed)
 		fmt.Println("Waktu eksekusi:", elapsed)
-	} else if pilihan ==2 {
-
-		maxDepth := 5              // Maximum depth for iterative deepening search
+	} else if pilihan ==2 {           // Maximum depth for iterative deepening search
 		startTime := time.Now()
 		fmt.Println("Mencari path . . .")
-		result , diperiksa, dilalui := iterativeDeepeningSearch(startURL, targetURL, maxDepth)
+		result , diperiksa, dilalui := iterativeDeepeningSearch(startURL, targetURL)
 		endTime := time.Since(startTime)
 		
 		if result == nil {
