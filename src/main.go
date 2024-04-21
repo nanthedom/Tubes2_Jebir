@@ -62,6 +62,8 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		Algoritma:    formData.Algoritma,
 	}
 
+	backend.MainBackend(formData)
+
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(responseData)
 }
