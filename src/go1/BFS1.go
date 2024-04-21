@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"strings"
-	"time"
 )
 
 // Node untuk artikel Wikipedia
@@ -75,31 +73,4 @@ func buildPathToTarget(target *Node) []*Node {
 		current = current.Parent
 	}
 	return path
-}
-
-func main() {
-	startURL := "https://en.wikipedia.org/wiki/French-suited_playing_cards"
-	targetURL := "https://en.wikipedia.org/wiki/Indian_Premier_League"
-
-	// startURL := "https://en.wikipedia.org/wiki/Physics"
-	// targetURL := "https://en.wikipedia.org/wiki/Indian_Premier_League"
-
-	startTime := time.Now()
-
-	path, articlesChecked, articlesTraversed, err := BFS(startURL, targetURL)
-
-	elapsed := time.Since(startTime)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println("\nPath dari", startURL, "ke", targetURL, "adalah:")
-	for i, node := range path {
-		fmt.Println(i+1, ".", node.Title, ":", node.URL)
-	}
-
-	fmt.Println("\nArtikel diperiksa:", articlesChecked)
-	fmt.Println("Artikel dikunjungi:", articlesTraversed)
-	fmt.Println("Waktu eksekusi:", elapsed)
 }
