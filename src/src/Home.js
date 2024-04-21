@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header';
 import FormInput from './components/FormInput';
 import Result from './components/Result';
 
 function App() {
+  const [formData, setFormData] = useState(null);
+
   const handleSubmit = async (formData) => {
     try {
       const response = await fetch('http://localhost:8000/save', {
@@ -19,6 +21,7 @@ function App() {
       }
 
       console.log('Data saved successfully');
+      setFormData(formData); // Update formData state
     } catch (error) {
       console.error('Error:', error);
     }
@@ -33,7 +36,7 @@ function App() {
         <FormInput onSubmit={handleSubmit} />
       </div>
       <div> 
-        <Result />
+        <Result formData={formData} />
       </div>
     </div>
   );
