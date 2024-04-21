@@ -27,6 +27,7 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 	var err error
 
 	if data.Algoritma == "BFS" {
+		fmt.Println("\nRute BFS")
 		startTime := time.Now()
 		paths, checkedArticle, clickArticle, err = BFS(data.StartUrl, data.EndUrl)
 		excTime = time.Since(startTime)
@@ -34,6 +35,7 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 			return nil, 0, 0, 0, err
 		}
 	} else {
+		fmt.Println("\nRute IDS")
 		startTime := time.Now()
 		paths, checkedArticle, clickArticle, err = IDS(data.StartUrl, data.EndUrl)
 		if err != nil {
@@ -42,9 +44,13 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 		excTime = time.Since(startTime)
 	}
 
+	
 	for _, path := range paths {
 		fmt.Println("URL:", path)
 	}
+	fmt.Println("\nexcTime: ", excTime)
+	fmt.Println("checkedArticle: ", checkedArticle)
+	fmt.Println("clickArticle: ", clickArticle)
 
 	return paths, checkedArticle, clickArticle, excTime, nil
 }

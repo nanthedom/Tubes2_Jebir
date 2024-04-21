@@ -40,7 +40,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Menampilkan data yang diterima dari request
-	fmt.Printf("\nReceived data:\n")
+	fmt.Printf("\n\n\nReceived data:\n")
 	fmt.Printf("Start Article: %s\n", formData.StartArticle)
 	fmt.Printf("Start Url: %s\n", formData.StartUrl)
 	fmt.Printf("End Article: %s\n", formData.EndArticle)
