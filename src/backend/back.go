@@ -2,7 +2,6 @@ package backend
 
 import (
 	"fmt"
-	"log"
 	"time"
 )
 
@@ -20,29 +19,32 @@ type Node struct {
 	Prev  *Node
 }
 
-func MainBackend(data FormData) {
+func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
+	var paths []string
+	var checkedArticle int
+	var clickArticle int
+	var excTime time.Duration
+	var err error
+
 	if data.Algoritma == "BFS" {
 		startTime := time.Now()
-		paths, checkedArticle, clickArticle, err := BFS(data.StartUrl, data.EndUrl)
-		excTime := time.Since(startTime)
+		paths, checkedArticle, clickArticle, err = BFS(data.StartUrl, data.EndUrl)
+		excTime = time.Since(startTime)
 		if err != nil {
-			log.Fatal(err)
+			return nil, 0, 0, 0, err
 		}
-		for _, path := range paths {
-			fmt.Println("URL:", path)
-		}
-		fmt.Println("checked article: ", checkedArticle)
-		fmt.Println("click article: ", clickArticle)
-		fmt.Println("excecution time:", excTime)
 	} else {
 		startTime := time.Now()
-		paths, checkedArticle, clickArticle := IDS(data.StartUrl, data.EndUrl)
-		excTime := time.Since(startTime)
-		for _, path := range paths {
-			fmt.Println("URL:", path)
+		paths, checkedArticle, clickArticle, err = IDS(data.StartUrl, data.EndUrl)
+		if err != nil {
+			return nil, 0, 0, 0, err
 		}
-		fmt.Println("checked article: ", checkedArticle)
-		fmt.Println("click article: ", clickArticle)
-		fmt.Println("excecution time:", excTime)
+		excTime = time.Since(startTime)
 	}
+
+	for _, path := range paths {
+		fmt.Println("URL:", path)
+	}
+
+	return paths, checkedArticle, clickArticle, excTime, nil
 }
