@@ -44,7 +44,6 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 		excTime = time.Since(startTime)
 	}
 
-	
 	for _, path := range paths {
 		fmt.Println("URL:", path)
 	}

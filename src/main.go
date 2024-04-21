@@ -34,6 +34,13 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Printf("\nReceived data:\n")
+	fmt.Printf("Start Article: %s\n", formData.StartArticle)
+	fmt.Printf("Start Url: %s\n", formData.StartUrl)
+	fmt.Printf("End Article: %s\n", formData.EndArticle)
+	fmt.Printf("End Url: %s\n", formData.EndUrl)
+	fmt.Printf("Algoritma: %s\n", formData.Algoritma)
+
 	paths, checkedArticle, clickArticle, excTime, err := backend.MainBackend(formData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
