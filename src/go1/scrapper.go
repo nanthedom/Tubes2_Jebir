@@ -37,36 +37,22 @@ func getNeighborsFromURL(URL string) ([]*Node, error) {
 	return neighbors, nil
 }
 
-func getNeighbors(URL string) ([]*Node, error) {
-	var neighbors []*Node
+func getNeighbors(URL string) ([]string, error) {
+	var neighbors []string
+
 	if URL == "a" {
-		neighbors = []*Node{
-			{Title: "b", URL: "b"},
-			{Title: "c", URL: "c"},
-			{Title: "d", URL: "d"},
-		}
+		neighbors = []string{"b", "c", "d"}
 	} else if URL == "b" {
-		neighbors = []*Node{
-			{Title: "e", URL: "e"},
-			{Title: "f", URL: "f"},
-		}
+		neighbors = []string{"e", "f"}
 	} else if URL == "c" {
-		neighbors = []*Node{
-			{Title: "g", URL: "g"},
-		}
+		neighbors = []string{"g"}
 	} else if URL == "g" {
-		neighbors = []*Node{
-			{Title: "h", URL: "h"},
-		}
+		neighbors = []string{"h"}
 	} else if URL == "d" {
-		neighbors = []*Node{
-			{Title: "i", URL: "i"},
-			{Title: "j", URL: "j"},
-		}
-	}  else if URL == "f" {
-		neighbors = []*Node{
-			{Title: "k", URL: "k"},
-		}
+		neighbors = []string{"i", "j"}
+	} else if URL == "f" {
+		neighbors = []string{"k"}
 	}
+
 	return neighbors, nil
 }
