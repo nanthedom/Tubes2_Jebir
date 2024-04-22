@@ -10,7 +10,7 @@ func main() {
 	// startURL := "https://en.wikipedia.org/wiki/Joko_Widodo"
 	// targetURL := "https://en.wikipedia.org/wiki/Erina_Gudono"
 	startURL := "a"
-	targetURL := "h"
+	targetURL := "k"
 	
 	var pilihan int;
 	fmt.Println("1. BFS")
@@ -41,7 +41,10 @@ func main() {
 	} else if pilihan ==2 {           // Maximum depth for iterative deepening search
 		startTime := time.Now()
 		fmt.Println("Mencari path . . .")
-		result , diperiksa, dilalui := iterativeDeepeningSearch(startURL, targetURL)
+		result , diperiksa, dilalui, err := IDS(startURL, targetURL)
+		if err != nil {
+			log.Fatal(err)
+		}
 		endTime := time.Since(startTime)
 		
 		if result == nil {
@@ -51,7 +54,7 @@ func main() {
 			fmt.Println("\nArtikel dilalui sebanyak: ", dilalui)
 			fmt.Println("\nPath found:")
 			for _, node := range result {
-				fmt.Println(node.URL)
+				fmt.Println(node)
 			}
 
 			fmt.Println("\nWaktu eksekusi: ", endTime)

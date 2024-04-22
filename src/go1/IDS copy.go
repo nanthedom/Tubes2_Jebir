@@ -1,4 +1,4 @@
-package backend
+package main
 
 import (
 	"fmt"
@@ -6,6 +6,7 @@ import (
 )
 
 func DLS(URL string, target string, depth int, visited map[string]bool, path []string) ([]string, int, error) {
+	fmt.Println(URL);
 	artikel_diperiksa := 0
 	if depth == 0 && URL == target {
 		artikel_diperiksa++
@@ -15,10 +16,9 @@ func DLS(URL string, target string, depth int, visited map[string]bool, path []s
 	if depth == 0{
 		artikel_diperiksa++
 	}
-
 	if depth > 0 {
 		visited[URL] = true
-		neighbors, err := scrapeLinks(URL)
+		neighbors, err:= getNeighbors(URL)
 		if err != nil {
 			return nil, 0, err
 		}
@@ -44,9 +44,11 @@ func IDS(startURL string, targetURL string) ([]string, int, int, error) {
 	artikel_diperiksa := 0
 	startTime := time.Now()
 	for depth := 0; time.Since(startTime).Seconds() <= 300; depth++ {
+		fmt.Println("Kedalaman: ", depth)
 		visited := make(map[string]bool)
-
+		
 		result, count, err := DLS(startURL, targetURL, depth, visited, []string{startURL})
+		fmt.Println("Hitung: ", count)
 		artikel_diperiksa += count
 		if err != nil {
 			return nil, artikel_diperiksa, 0, err
