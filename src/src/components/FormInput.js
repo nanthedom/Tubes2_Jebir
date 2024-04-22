@@ -50,6 +50,12 @@ const FormInput = ({ onSubmit }) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
     name === 'startArticle' ? setStartSuggestionSelected(false) : setEndSuggestionSelected(false);
+
+    if (name === 'startArticle') {
+      setFormData((prevData) => ({ ...prevData, startUrl: '' }));
+    } else if (name === 'endArticle') {
+      setFormData((prevData) => ({ ...prevData, endUrl: '' }));
+    }
   };
 
   const handleSelectSuggestion = (value, field, urlField, setSelected) => {
@@ -106,7 +112,7 @@ const FormInput = ({ onSubmit }) => {
           </div>
         </label>
         <button type="button" onClick={handleSwapInputs} className="inline-button">
-          <img className="arrow-img" src={arrow} alt=""/></button>
+          <img className="arrow-img" src={arrow} alt="" /></button>
         <label>
           End <br />
           <div className="autocomplete">
@@ -147,9 +153,9 @@ const FormInput = ({ onSubmit }) => {
           </select>
         </label>
         <button type="submit" className="inline-button">Find!</button>
-        
+
       </form>
-      
+
       {submittedData && (
         <div className="finding-route">
           {(formData.endArticle.length === 0 || formData.startArticle.length === 0) ? (
