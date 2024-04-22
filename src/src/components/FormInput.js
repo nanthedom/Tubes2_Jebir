@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './FormInput.css';
+import arrow from './assets/arrow.png';
 
 const FormInput = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -64,6 +65,16 @@ const FormInput = ({ onSubmit }) => {
     setSubmittedData(formData);
   };
 
+  const handleSwapInputs = () => {
+    setFormData({
+      ...formData,
+      startArticle: formData.endArticle,
+      startUrl: formData.endUrl,
+      endArticle: formData.startArticle,
+      endUrl: formData.startUrl
+    });
+  };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className="inline-form">
@@ -94,6 +105,8 @@ const FormInput = ({ onSubmit }) => {
             )}
           </div>
         </label>
+        <button type="button" onClick={handleSwapInputs} className="inline-button">
+          <img className="arrow-img" src={arrow} alt=""/></button>
         <label>
           End <br />
           <div className="autocomplete">
@@ -134,6 +147,7 @@ const FormInput = ({ onSubmit }) => {
           </select>
         </label>
         <button type="submit" className="inline-button">Find!</button>
+        
       </form>
       
       {submittedData && (
