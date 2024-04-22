@@ -5,9 +5,11 @@ import Result from './components/Result';
 
 function Home() {
   const [formData, setFormData] = useState(null);
+  const [updateTrigger, setUpdateTrigger] = useState(false);
 
   const handleFormSubmit = (formData) => {
     setFormData(formData);
+    setUpdateTrigger(prevState => !prevState); // Memperbarui trigger setiap kali formulir disubmit
   };
 
   return (
@@ -19,7 +21,7 @@ function Home() {
         <FormInput onFormSubmit={handleFormSubmit} />
       </div>
       <div>
-        {formData && <Result formData={formData} />}
+        {formData && <Result formData={formData} updateTrigger={updateTrigger} />}
       </div>
     </div>
   );
