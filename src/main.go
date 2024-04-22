@@ -47,6 +47,13 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	for _, path := range paths {
+		fmt.Println("URL:", path)
+	}
+	fmt.Println("\nexcTime: ", excTime)
+	fmt.Println("checkedArticle: ", checkedArticle)
+	fmt.Println("clickArticle: ", clickArticle)
+
 	responseData := struct {
 		Message        string   `json:"message"`
 		StartArticle   string   `json:"startArticle"`

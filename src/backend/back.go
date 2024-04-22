@@ -44,12 +44,5 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 		excTime = time.Since(startTime)
 	}
 
-	for _, path := range paths {
-		fmt.Println("URL:", path)
-	}
-	fmt.Println("\nexcTime: ", excTime)
-	fmt.Println("checkedArticle: ", checkedArticle)
-	fmt.Println("clickArticle: ", clickArticle)
-
 	return paths, checkedArticle, clickArticle, excTime, nil
 }
