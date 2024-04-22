@@ -11,7 +11,8 @@ const GraphVisualization = ({ paths }) => {
 
     nodes = [...new Set(paths.flat())].map((element, index) => ({
         id: `node_${index}`, 
-        label: element.toString(),
+        label: element,
+        url: `${element}`
     }));
 
     for (let i = 0; i < paths.length - 1; i++) {
@@ -28,6 +29,13 @@ const GraphVisualization = ({ paths }) => {
         }
     }
 
+    const handleNodeClick = (event) => {
+        const nodeId = event.nodes[0];
+        const clickedNode = nodes.find(node => node.id === nodeId);
+        if (clickedNode && clickedNode.url) {
+            window.open(clickedNode.url, '_blank'); // Buka URL di tab baru
+        }
+    };
 
     const graph = {
         nodes,
@@ -67,12 +75,22 @@ const GraphVisualization = ({ paths }) => {
             smooth: {
                 type: "continuous"
             }
+        },
+        interaction: {
+            hover: true,
+            navigationButtons: true,
+            keyboard: true,
+            selectConnectedEdges: false,
+            hoverConnectedEdges: false,
+            multiselect: false,
+            tooltipDelay: 300,
+            zoomView: true
         }
     };    
 
     return (
-        <div style={{ height: '500px' }}>
-            <Graph graph={graph} options={options} />
+        <div style={{ height: '500px', width: '500px' }}>
+            <Graph graph={graph} options={options} events={{ click: handleNodeClick }} />
         </div>
     );
 };
