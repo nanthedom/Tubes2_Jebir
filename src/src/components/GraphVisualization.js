@@ -38,16 +38,37 @@ const GraphVisualization = ({ paths }) => {
         layout: {
             hierarchical: false
         },
+        nodes: {
+            color: "#dcc9f1",
+            font: {
+                size: 14, 
+                color: "#333"
+            },
+            shape: "box", 
+            borderWidth: 2,
+            borderWidthSelected: 4, 
+            chosen: {
+                node: function (values, id, selected, hovering) {
+                    values.borderWidth = selected ? 4 : 2; 
+                    values.borderColor = selected ? "#3a025e;" : "#dcc9f1";
+                }
+            }
+        },
         edges: {
-            color: "#000000",
+            color: "#611097",
             arrows: {
                 to: {
                     enabled: true,
-                    scaleFactor: 1 
+                    scaleFactor: 0.4
                 }
+            },
+            width: 2, 
+            hoverWidth: 0.5,
+            smooth: {
+                type: "continuous"
             }
         }
-    };
+    };    
 
     return (
         <div style={{ height: '500px' }}>
