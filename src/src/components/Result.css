@@ -50,3 +50,53 @@
     bottom: 20px;
     color: #524869;
 }
+
+@media screen and (max-width: 800px) {
+    .article-checked {
+        left: 20px;
+    }
+
+    .article-clicked {
+        right: 20px;
+    }
+}
+
+.loading-spinner {
+    position: relative;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #524869;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fun-fact {
+    animation: fadeInOut 6.6s linear infinite;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    text-align: center;
+    color: #6d5e8d;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    12.5% { opacity: 0.8; }
+    25% { opacity: 0.9; }
+    50% { opacity: 1; }
+    75% { opacity: 0.9; }
+    87.5% { opacity: 0.8; }
+    100% { opacity: 0; }
+}
