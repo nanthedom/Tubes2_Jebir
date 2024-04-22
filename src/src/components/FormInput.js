@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './FormInput.css';
 import arrow from './assets/arrow.png';
 
-const FormInput = ({ onSubmit }) => {
+const FormInput = ({ onFormSubmit }) => {
   const [formData, setFormData] = useState({
     startArticle: '',
     startUrl: '',
@@ -11,7 +11,6 @@ const FormInput = ({ onSubmit }) => {
     algoritma: 'BFS'
   });
 
-  const [submittedData, setSubmittedData] = useState(null);
   const [startSuggestions, setStartSuggestions] = useState([]);
   const [endSuggestions, setEndSuggestions] = useState([]);
   const [startSuggestionSelected, setStartSuggestionSelected] = useState(false);
@@ -67,8 +66,7 @@ const FormInput = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSubmit(formData);
-    setSubmittedData(formData);
+    onFormSubmit(formData); // Call the callback function with form data
   };
 
   const handleSwapInputs = () => {
@@ -153,25 +151,7 @@ const FormInput = ({ onSubmit }) => {
           </select>
         </label>
         <button type="submit" className="inline-button">Find!</button>
-
       </form>
-
-      {submittedData && (
-        <div className="finding-route">
-          {(formData.endArticle.length === 0 || formData.startArticle.length === 0) ? (
-            <p>Start and End cannot be blank!</p>
-          ) : (
-            (!startSuggestionSelected || !endSuggestionSelected) ? (
-              <p>Please select a suggestion for both start and end articles.</p>
-            ) : (
-              <div>
-                <h2>Finding Route:</h2>
-                <p>{submittedData.startArticle} To {submittedData.endArticle}</p>
-              </div>
-            )
-          )}
-        </div>
-      )}
     </div>
   );
 };

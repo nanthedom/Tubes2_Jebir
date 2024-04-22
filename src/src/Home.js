@@ -3,28 +3,11 @@ import Header from './components/Header';
 import FormInput from './components/FormInput';
 import Result from './components/Result';
 
-function App() {
+function Home() {
   const [formData, setFormData] = useState(null);
 
-  const handleSubmit = async (formData) => {
-    try {
-      const response = await fetch('http://localhost:8000/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save data');
-      }
-
-      console.log('Data saved successfully');
-      setFormData(formData); // Update formData state
-    } catch (error) {
-      console.error('Error:', error);
-    }
+  const handleFormSubmit = (formData) => {
+    setFormData(formData);
   };
 
   return (
@@ -33,13 +16,13 @@ function App() {
         <Header />
       </div>
       <div className="FormInput">
-        <FormInput onSubmit={handleSubmit} />
+        <FormInput onFormSubmit={handleFormSubmit} />
       </div>
-      <div> 
-        {formData && <Result formData={formData} />} {/* Conditionally render Result component */}
+      <div>
+        {formData && <Result formData={formData} />}
       </div>
     </div>
   );
 }
 
-export default App;
+export default Home;
