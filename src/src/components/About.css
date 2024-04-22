@@ -1,14 +1,32 @@
-.content {
+.content-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     /* padding: 20px; */
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    /* margin: 20px; */
+    margin-inline: 300px;
+
+    /* Add media query for smartphones */
+    @media (max-width: 1000px) {
+        margin-inline: 20px; /* Adjusted margin value for smartphones */
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+    /* padding: 20px; */
     padding-inline: 20px;
     background-color: #f5f5f5;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 .blank {
@@ -55,42 +73,3 @@
     color: aliceblue;
 }
 
-@media screen and (min-width: 1024px) {
-    .content {
-        padding-inline: 250px; /* Nilai saat layar besar */
-    }
-}
-
-
-
-
-
-
-/* 
-.anggota-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.anggota-wrapper {
-text-align: center;
-margin: 0 10px; 
-}
-
-.gambar-anggota {
-width: 150px;
-height: auto; 
-border-radius: 50%; 
-}
-
-.nama-anggota {
-margin-top: 10px;
-font-weight: bold;
-}
-
-.nim-anggota {
-font-size: 14px; 
-color: #888; 
-}
-*/

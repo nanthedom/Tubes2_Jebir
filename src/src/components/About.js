@@ -13,12 +13,15 @@ function About() {
             </div>
             <div>
                 <h1 className="page-title">About Jebir Wikirace</h1>
-                <p className="content">
-                    Jebir Wikirace adalah website application yang memungkinkan pengguna untuk mencari rute terpendek antara dua artikel Wikipedia. Algoritma yang dapat digunakan adalah algoritma BFS dan IDS.
-                </p>
-                <p className="content">
-                    Website ini merupakan realisasi atas Tugas Besar II Strategi Algoritma (IF2211). Dibuat oleh kelompok Jebir dengan anggota:
-                </p>
+                <div className="content-container">
+                    <p className="content">
+                        Jebir Wikirace adalah website application yang memungkinkan pengguna untuk melakukan pencarian rute artikel Wikipedia terpendek dari artikel awal ke artikel tujuan menggunakan dua opsi pendekatan algoritma: Breadth-First Search (BFS) atau Iterative Deepening Search (IDS). Hasil pencarian pada website ini akan menampilkan: jumlah artikel yang diperiksa, jumlah artikel yang dilalui, rute penjelajahan artikel, waktu pencarian
+                    </p>
+                    <p className="content">
+                        Website ini merupakan realisasi atas Tugas Besar II Strategi Algoritma (IF2211). Dibuat oleh kelompok Jebir dengan anggota:
+                    </p>
+                </div>
+                
                 <div className="blank"></div>
                 <div className="anggota-container">
                     <div className="anggota-wrapper">
