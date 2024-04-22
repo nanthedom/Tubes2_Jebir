@@ -53,6 +53,7 @@
 
 .finding-route {
     text-align: center;
+    color: #6d5e8d;
 }
 
 .autocomplete {
@@ -90,4 +91,9 @@
     max-height: 200px;
     overflow-y: auto;
     box-shadow: 0px 10px 20px rgb(107, 49, 182);
+}
+
+.arrow-img {
+    width: 20px;
+    height: 11px;
 }
