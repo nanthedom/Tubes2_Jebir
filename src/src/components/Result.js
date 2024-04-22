@@ -39,16 +39,20 @@ const Result = ({ formData, updateTrigger }) => {
             <h2 className="result-title">Result</h2>
             <div className="result-container">
                 <div className="article-checked">
-                    Article checked: {checkedArticle}
+                    Article checked: {checkedArticle} <br/>
                 </div>
                 <div className="article-clicked">
                     Article clicked: {clickArticle}
+                </div>
+                <div className="addition">
+                    move node to adjust your view and
+                    click node to visit page!
                 </div>
                 <div className="exc-time">
                     Execution time: {excTime}
                 </div>
                 <div className="graph">
-                    <GraphVisualization key={JSON.stringify(paths)} paths={paths} />
+                    <GraphVisualization paths={paths} />
                 </div>
             </div>
         </div>

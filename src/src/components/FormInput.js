@@ -67,8 +67,8 @@ const FormInput = ({ onFormSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(formData); // Call the callback function with form data
-    setSubmittedData(formData); // Update submittedData state
+    onFormSubmit(formData);
+    setSubmittedData(formData);
   };
 
   const handleSwapInputs = () => {

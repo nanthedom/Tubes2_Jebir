@@ -1,7 +1,7 @@
 import React from 'react';
 import Graph from 'react-graph-vis';
 
-const GraphVisualization = ({ paths }) => {
+const GraphVisualization = ({paths, updateTrigger}) => {
     let nodes = [];
     let edges = [];
 
@@ -11,13 +11,13 @@ const GraphVisualization = ({ paths }) => {
 
     nodes = [...new Set(paths.flat())].map((element, index) => ({
         id: `node_${index}`, 
-        label: element,
+        label: element.split('/').pop().replace(/_/g, " "),
         url: `${element}`
-    }));
+    }));    
 
     for (let i = 0; i < paths.length - 1; i++) {
-        const fromNode = nodes.find(node => node.label === paths[i].toString());
-        const toNode = nodes.find(node => node.label === paths[i + 1].toString());
+        const fromNode = nodes.find(node => node.url === paths[i].toString());
+        const toNode = nodes.find(node => node.url === paths[i + 1].toString());
 
         if (fromNode && toNode) {
             edges.push({
@@ -44,7 +44,8 @@ const GraphVisualization = ({ paths }) => {
 
     const options = {
         layout: {
-            hierarchical: false
+            hierarchical: false,
+            randomSeed: 2
         },
         nodes: {
             color: "#dcc9f1",
@@ -84,12 +85,14 @@ const GraphVisualization = ({ paths }) => {
             hoverConnectedEdges: false,
             multiselect: false,
             tooltipDelay: 300,
-            zoomView: true
+            zoomView: true,
+            initialZoomLevel: 2,
+            maxZoomLevel: 3
         }
     };    
 
     return (
-        <div style={{ height: '500px', width: '500px' }}>
+        <div style={{ height: '500px', width: '1000px' }}>
             <Graph graph={graph} options={options} events={{ click: handleNodeClick }} />
         </div>
     );

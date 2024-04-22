@@ -9,7 +9,7 @@ function Home() {
 
   const handleFormSubmit = (formData) => {
     setFormData(formData);
-    setUpdateTrigger(prevState => !prevState); // Memperbarui trigger setiap kali formulir disubmit
+    setUpdateTrigger(prevState => !prevState);
   };
 
   return (

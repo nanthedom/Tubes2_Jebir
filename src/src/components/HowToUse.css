@@ -248,22 +248,21 @@ body {
     box-sizing: border-box;
 }
 
-/* Media query untuk layar smartphone */
 @media screen and (max-width: 767px) {
     .step,
     .step-1,
     .step-2,
     .step-3,
     .step-4 {
-        font-size: 14px; /* Atur ukuran font yang lebih kecil untuk langkah-langkah pada layar smartphone */
-        width: auto; /* Set lebar agar disesuaikan dengan konten di dalamnya */
-        margin-right: 10px; /* Beri sedikit ruang antar langkah pada layar smartphone */
+        font-size: 14px; 
+        width: auto; 
+        margin-right: 10px; 
     }
     .container,
     .container-1,
     .container-2,
     .container-3,
     .container-4 {
-        border-radius: 49%; /* Mengatur border radius agar bentuknya menjadi lingkaran */
+        border-radius: 49%;
     }
 }
