@@ -11,6 +11,7 @@ const FormInput = ({ onFormSubmit }) => {
     algoritma: 'BFS'
   });
 
+  const [submittedData, setSubmittedData] = useState(null);
   const [startSuggestions, setStartSuggestions] = useState([]);
   const [endSuggestions, setEndSuggestions] = useState([]);
   const [startSuggestionSelected, setStartSuggestionSelected] = useState(false);
@@ -67,6 +68,7 @@ const FormInput = ({ onFormSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onFormSubmit(formData); // Call the callback function with form data
+    setSubmittedData(formData); // Update submittedData state
   };
 
   const handleSwapInputs = () => {
@@ -152,6 +154,23 @@ const FormInput = ({ onFormSubmit }) => {
         </label>
         <button type="submit" className="inline-button">Find!</button>
       </form>
+
+      {submittedData && (
+        <div className="finding-route">
+          {formData.endArticle.length === 0 || formData.startArticle.length === 0 ? (
+            <p>Start and End cannot be blank!</p>
+          ) : !startSuggestionSelected || !endSuggestionSelected ? (
+            <p>Please select a suggestion for both start and end articles.</p>
+          ) : (
+            <div>
+              <h2>Finding Route:</h2>
+              <p>
+                {submittedData.startArticle} To {submittedData.endArticle}
+              </p>
+            </div>
+          )}
+        </div>
+      )}
     </div>
   );
 };
