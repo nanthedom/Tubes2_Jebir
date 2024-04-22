@@ -24,7 +24,7 @@
     position: absolute;
     text-align: center;
     top: 30px; 
-    right: 10px;
+    right: 20%;
     color: #524869;
 }
 
@@ -40,7 +40,7 @@
     position: absolute;
     text-align: center;
     top: 30px; 
-    left: 10px;
+    left: 20%;
     color: #524869;
 }
 
@@ -53,11 +53,11 @@
 
 @media screen and (max-width: 800px) {
     .article-checked {
-        left: 20px;
+        right: 30px;
     }
 
     .article-clicked {
-        right: 20px;
+        left: 30px;
     }
 }
 
