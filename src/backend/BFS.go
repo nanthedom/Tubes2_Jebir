@@ -13,6 +13,11 @@ func BFS(start, end string) ([]string, int, int, error) {
 	for len(queue) > 0 {
 		currentNode := queue[0]
 		queue = queue[1:]
+
+		if visited[currentNode.Url] {
+			continue
+		}
+
 		visited[currentNode.Url] = true
 
 		links, err := scrapeLinks(currentNode.Url)
