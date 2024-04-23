@@ -13,7 +13,7 @@ func filter(str string, keywords []string) bool {
 			return true
 		}
 	}
-	return false 
+	return false
 }
 
 func scrapeLinks(url string) ([]string, error) {
@@ -29,7 +29,7 @@ func scrapeLinks(url string) ([]string, error) {
 	}
 
 	var links []string
-	filterWords := []string{"Main_Page", "Special:", "Help:", "Template:", "Category:", "Portal:", "Wikipedia:"}
+	filterWords := []string{"Main_Page", "Special:", "Help:", "Template:", "Category:", "Portal:", "Wikipedia:", "Talk:", "File:"}
 	doc.Find("a").Each(func(i int, s *goquery.Selection) {
 		href, exists := s.Attr("href")
 		if exists && strings.HasPrefix(href, "/wiki/") && !filter(href, filterWords) {
