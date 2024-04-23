@@ -141,7 +141,7 @@ const FormInput = ({ onFormSubmit }) => {
           </div>
         </label>
         <label>
-          Algoritma <br />
+          Algorithm <br />
           <select
             name="algoritma"
             value={formData.algoritma}
