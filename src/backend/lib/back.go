@@ -28,9 +28,23 @@ func MainBackend(data FormData) ([]string, int, int, time.Duration, error) {
 
 	if data.Algoritma == "BFS" {
 		fmt.Println("\nRute BFS")
+		// coba bonus
 		startTime := time.Now()
-		paths, checkedArticle, clickArticle, err = BFS(data.StartUrl, data.EndUrl)
+		pathsBonus, checked, click, err := BFSBonus(data.StartUrl, data.EndUrl)
 		excTime = time.Since(startTime)
+		if err != nil {
+			return nil, 0, 0, 0, err
+		}
+		for _, path := range pathsBonus {
+			for _, url := range path {
+				fmt.Println(url)
+			}
+			fmt.Println()
+		}
+		fmt.Println(len(pathsBonus))
+		fmt.Println(checked)
+		fmt.Println(click)
+		paths, checkedArticle, clickArticle, err = BFS(data.StartUrl, data.EndUrl)
 		if err != nil {
 			return nil, 0, 0, 0, err
 		}
