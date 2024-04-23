@@ -19,12 +19,23 @@ const FormInput = ({ onFormSubmit }) => {
 
   const fetchSuggestions = async (inputValue, setter) => {
     try {
+      const filterkeywords = [
+        "Main Page",
+        "Special:",
+        "Help:",
+        "Template:",
+        "Category:",
+        "Portal:",
+        "Wikipedia:",
+        "Talk:",
+        "File:"];
       const response = await fetch(
         `https://en.wikipedia.org/w/api.php?action=opensearch&limit=10&format=json&search=${inputValue}&origin=*`
       );
       const data = await response.json();
       const suggestions = data[1] || [];
-      setter(suggestions);
+      const filteredSuggestions = suggestions.filter(suggestion => !filterkeywords.some(keyword => suggestion.includes(keyword)));
+      setter(filteredSuggestions);
     } catch (error) {
       console.error('Error fetching suggestions:', error);
     }
@@ -67,8 +78,8 @@ const FormInput = ({ onFormSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onFormSubmit(formData); 
-    setSubmittedData(formData); 
+    onFormSubmit(formData);
+    setSubmittedData(formData);
   };
 
   const handleSwapInputs = () => {
