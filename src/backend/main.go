@@ -6,7 +6,7 @@ import (
 	"log"
 	"net/http"
 
-	backend "app/util/backend"
+	backend "app/util/lib"
 
 	"github.com/rs/cors"
 )
