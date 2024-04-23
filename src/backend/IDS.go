@@ -12,7 +12,7 @@ func DLS(URL string, target string, depth int, visited map[string]bool, path []s
 		return []string{URL}, artikel_diperiksa, nil
 	}
 
-	if depth == 0{
+	if depth == 0 {
 		artikel_diperiksa++
 	}
 

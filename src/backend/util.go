@@ -22,7 +22,7 @@ func scrapeLinks(url string) ([]string, error) {
 	var links []string
 	doc.Find("a").Each(func(i int, s *goquery.Selection) {
 		href, exists := s.Attr("href")
-		if exists && strings.HasPrefix(href, "/wiki/") && !strings.Contains(href, "Main_Page")  && !strings.Contains(href, "Special:") && !strings.Contains(href, "Help:") && !strings.Contains(href, "Template:") && !strings.Contains(href, "Category:") && !strings.Contains(href, "Portal:") && !strings.Contains(href, "Wikipedia:"){
+		if exists && strings.HasPrefix(href, "/wiki/") && !strings.Contains(href, "Main_Page") && !strings.Contains(href, "Special:") && !strings.Contains(href, "Help:") && !strings.Contains(href, "Template:") && !strings.Contains(href, "Category:") && !strings.Contains(href, "Portal:") && !strings.Contains(href, "Wikipedia:") {
 			links = append(links, "https://en.wikipedia.org"+href)
 		}
 	})
