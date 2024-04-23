@@ -3,9 +3,13 @@ package backend
 import "fmt"
 
 func BFS(start, end string) ([]string, int, int, error) {
+	if len(start) == 0 || len(end) == 0 {
+		return nil, 0, 0, nil
+	}
+
 	checkedArticle := 1
 	if start == end {
-		return []string{start}, checkedArticle, 0, nil
+		return []string{start, end}, checkedArticle, 0, nil
 	}
 	visited := make(map[string]bool)
 	queue := []*Node{{Url: start, Depth: 0}}

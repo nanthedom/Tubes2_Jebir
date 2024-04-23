@@ -41,6 +41,10 @@ func DLS(URL string, target string, depth int, visited map[string]bool, path []s
 }
 
 func IDS(startURL string, targetURL string) ([]string, int, int, error) {
+	if len(startURL) == 0 || len(targetURL) == 0 {
+		return nil, 0, 0, nil
+	}
+
 	artikel_diperiksa := 0
 	startTime := time.Now()
 	for depth := 0; time.Since(startTime).Seconds() <= 300; depth++ {

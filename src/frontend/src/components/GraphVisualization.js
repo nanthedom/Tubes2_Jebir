@@ -5,7 +5,7 @@ const GraphVisualization = ({paths, updateTrigger}) => {
     let nodes = [];
     let edges = [];
 
-    if (!paths || paths.length === 1) {
+    if (!paths || paths.length === 0) {
         return <div>No path available!</div>;
     }
 

@@ -47,12 +47,17 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if paths == nil {
+		fmt.Println("no path available!")
+	}
+
 	for _, path := range paths {
 		fmt.Println("URL:", path)
 	}
 	fmt.Println("\nexcTime: ", excTime)
 	fmt.Println("checkedArticle: ", checkedArticle)
 	fmt.Println("clickArticle: ", clickArticle)
+	fmt.Println("done successfully!")
 
 	responseData := struct {
 		Message        string   `json:"message"`
