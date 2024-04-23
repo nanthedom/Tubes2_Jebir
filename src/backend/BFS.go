@@ -3,7 +3,7 @@ package backend
 import "fmt"
 
 func BFS(start, end string) ([]string, int, int, error) {
-	checkedArticle := 0
+	checkedArticle := 1
 	if start == end {
 		return []string{start}, checkedArticle, 0, nil
 	}

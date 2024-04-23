@@ -7,6 +7,15 @@ import (
 	"github.com/PuerkitoBio/goquery"
 )
 
+func filter(str string, keywords []string) bool {
+	for _, keyword := range keywords {
+		if strings.Contains(str, keyword) {
+			return true
+		}
+	}
+	return false 
+}
+
 func scrapeLinks(url string) ([]string, error) {
 	resp, err := http.Get(url)
 	if err != nil {
@@ -20,9 +29,10 @@ func scrapeLinks(url string) ([]string, error) {
 	}
 
 	var links []string
+	filterWords := []string{"Main_Page", "Special:", "Help:", "Template:", "Category:", "Portal:", "Wikipedia:"}
 	doc.Find("a").Each(func(i int, s *goquery.Selection) {
 		href, exists := s.Attr("href")
-		if exists && strings.HasPrefix(href, "/wiki/") && !strings.Contains(href, "Main_Page") && !strings.Contains(href, "Special:") && !strings.Contains(href, "Help:") && !strings.Contains(href, "Template:") && !strings.Contains(href, "Category:") && !strings.Contains(href, "Portal:") && !strings.Contains(href, "Wikipedia:") {
+		if exists && strings.HasPrefix(href, "/wiki/") && !filter(href, filterWords) {
 			links = append(links, "https://en.wikipedia.org"+href)
 		}
 	})
