@@ -1,11 +1,13 @@
-package backend
+package main
 
 import (
+	"fmt"
 	"net/http"
 	"strings"
 
 	"github.com/PuerkitoBio/goquery"
 )
+
 
 func scrapeLinks(url string) ([]string, error) {
 	resp, err := http.Get(url)
@@ -30,12 +32,17 @@ func scrapeLinks(url string) ([]string, error) {
 	return links, nil
 }
 
-func buildPathToTarget(target *Node) []string {
-	var path []string
-	current := target
-	for current != nil {
-		path = append([]string{current.Url}, path...)
-		current = current.Prev
+
+func main() {
+	url := "https://en.wikipedia.org/wiki/Bandung_Institute_of_Technology"
+	links, err := scrapeLinks(url)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
 	}
-	return path
+
+	// Loop over the links and print them one by one
+	for _, link := range links {
+		fmt.Println(link) // This prints each link
+	}
 }
