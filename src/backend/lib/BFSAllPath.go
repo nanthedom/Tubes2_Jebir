@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func BFSBonus(start, end string) ([][]string, int, int, error) {
+func BFSAllPath(start, end string) ([][]string, int, int, error) {
 	if len(start) == 0 || len(end) == 0 {
 		return nil, 0, 0, nil
 	}
@@ -43,7 +43,6 @@ func BFSBonus(start, end string) ([][]string, int, int, error) {
 							if !visitedPaths[pathString] {
 								visitedPaths[pathString] = true
 								depth = currentNode.Depth + 1
-
 								paths = append(paths, newPath)
 							}
 						}
@@ -56,7 +55,7 @@ func BFSBonus(start, end string) ([][]string, int, int, error) {
 		}
 	}
 	if len(paths) == 0 {
-		return nil, checkedArticle, checkedArticle, fmt.Errorf("not found")
+		return nil, checkedArticle, 0, fmt.Errorf("not found")
 	}
 	return paths, checkedArticle, depth, nil
 }

@@ -15,17 +15,19 @@ const GraphVisualization = ({paths, updateTrigger}) => {
         url: `${element}`
     }));    
 
-    for (let i = 0; i < paths.length - 1; i++) {
-        const fromNode = nodes.find(node => node.url === paths[i].toString());
-        const toNode = nodes.find(node => node.url === paths[i + 1].toString());
+    for (let i = 0; i < paths.length; i++) {
+        for (let j = 0; j < paths[i].length - 1; j++) {
+            const fromNode = nodes.find(node => node.url === paths[i][j]);
+            const toNode = nodes.find(node => node.url === paths[i][j + 1]);
 
-        if (fromNode && toNode) {
-            edges.push({
-                from: fromNode.id,
-                to: toNode.id,
-            });
-        } else {
-            console.warn(`Node not found for edge from ${paths[i]} to ${paths[i + 1]}`);
+            if (fromNode && toNode) {
+                edges.push({
+                    from: fromNode.id,
+                    to: toNode.id,
+                });
+            } else {
+                console.warn(`Node not found for edge from ${paths[i][j]} to ${paths[i][j + 1]}`);
+            }
         }
     }
 
@@ -44,8 +46,11 @@ const GraphVisualization = ({paths, updateTrigger}) => {
 
     const options = {
         layout: {
-            hierarchical: false,
-            randomSeed: 2
+            hierarchical: {
+                direction: "UD",
+                sortMethod: "directed",
+                levelSeparation: 100,
+            },
         },
         nodes: {
             color: "#dcc9f1",

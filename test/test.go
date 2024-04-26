@@ -42,15 +42,37 @@ func scrapeLinks(url string) ([]string, error) {
 	return links, nil
 }
 
+// func main() {
+// 	url := "https://en.wikipedia.org/wiki/Main_Page"
+// 	links, err := scrapeLinks(url)
+// 	if err != nil {
+// 		fmt.Println("Error:", err)
+// 		return
+// 	}
+
+// 	for _, link := range links {
+// 		fmt.Println(link)
+// 	}
+// }
+
+
 func main() {
-	url := "https://en.wikipedia.org/wiki/Main_Page"
-	links, err := scrapeLinks(url)
+	startURL := "https://en.wikipedia.org/wiki/Joko_Widodo"
+	targetURL := "https://en.wikipedia.org/wiki/Erina_Gudono"
+
+	allPaths, artikelDiperiksa, depth, err := IDS(startURL, targetURL)
 	if err != nil {
 		fmt.Println("Error:", err)
 		return
 	}
+	if len(allPaths) > 0 {
+		fmt.Printf("Total articles checked: %d\n", artikelDiperiksa)
+		fmt.Printf("Total articles click: %d\n", depth)
 
-	for _, link := range links {
-		fmt.Println(link)
+		for i, path := range allPaths {
+			fmt.Printf("Path %d: %s\n", i+1, strings.Join(path, ", "))
+		}
+	} else {
+		fmt.Println("ga ada")
 	}
 }

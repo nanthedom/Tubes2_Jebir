@@ -160,7 +160,9 @@ const FormInput = ({ onFormSubmit }) => {
             className="inline-input"
           >
             <option className="suggestion" value="BFS">BFS</option>
+            <option className="suggestion" value="BFS All Path">BFS All Path</option>
             <option className="suggestion" value="IDS">IDS</option>
+            <option className="suggestion" value="IDS All Path">IDS All Path</option>
           </select>
         </label>
         <button type="submit" className="inline-button">Find!</button>
