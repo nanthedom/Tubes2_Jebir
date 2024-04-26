@@ -63,7 +63,7 @@ func BFSgorut(start, end string) ([]string, int, int, error) {
 		fmt.Println("Checked Article: ", checkedArticle)
 
 		// sleep for 0.5 millisecond
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(5 * time.Millisecond)
 		// time.Sleep(500 * time.Microsecond)
 
 		wg.Add(1)
