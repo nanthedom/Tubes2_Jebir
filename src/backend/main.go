@@ -52,24 +52,28 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	for _, path := range paths {
-		fmt.Println("URL:", path)
+		for _, url := range path {
+			fmt.Println("URL:", url)
+		}
+		fmt.Println()
 	}
+
 	fmt.Println("\nexcTime: ", excTime)
 	fmt.Println("checkedArticle: ", checkedArticle)
 	fmt.Println("clickArticle: ", clickArticle)
 	fmt.Println("done successfully!")
 
 	responseData := struct {
-		Message        string   `json:"message"`
-		StartArticle   string   `json:"startArticle"`
-		EndArticle     string   `json:"endArticle"`
-		StartUrl       string   `json:"startUrl"`
-		EndUrl         string   `json:"endUrl"`
-		Algoritma      string   `json:"algoritma"`
-		Paths          []string `json:"paths"`
-		CheckedArticle int      `json:"checkedArticle"`
-		ClickArticle   int      `json:"clickArticle"`
-		ExcTime        string   `json:"excTime"`
+		Message        string     `json:"message"`
+		StartArticle   string     `json:"startArticle"`
+		EndArticle     string     `json:"endArticle"`
+		StartUrl       string     `json:"startUrl"`
+		EndUrl         string     `json:"endUrl"`
+		Algoritma      string     `json:"algoritma"`
+		Paths          [][]string `json:"paths"`
+		CheckedArticle int        `json:"checkedArticle"`
+		ClickArticle   int        `json:"clickArticle"`
+		ExcTime        string     `json:"excTime"`
 	}{
 		Message:        "Received data successfully",
 		StartArticle:   formData.StartArticle,
