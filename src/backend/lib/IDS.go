@@ -5,7 +5,11 @@ import (
 	"time"
 )
 
-func DLS(URL string, target string, depth int, visited map[string]bool, path []string) ([]string, int, error) {
+func DLS(URL string, target string, depth int, visited map[string]bool) ([]string, int, error) {
+
+	// print URL
+	fmt.Println("URL: ", URL)
+
 	artikel_diperiksa := 0
 	if depth == 0 && URL == target {
 		artikel_diperiksa++
@@ -24,11 +28,15 @@ func DLS(URL string, target string, depth int, visited map[string]bool, path []s
 		}
 		for _, neighbor := range neighbors {
 			if !visited[neighbor] {
-				temp, count, err2 := DLS(neighbor, target, depth-1, visited, append(path, neighbor))
+				temp, count, err2 := DLS(neighbor, target, depth-1, visited)
 				if err2 != nil {
 					return nil, 0, err2
 				}
 				artikel_diperiksa += count
+
+				// print artikel diperiksa
+				fmt.Println("Artikel diperiksa: ", artikel_diperiksa)
+
 				if temp != nil {
 					result := append([]string{URL}, temp...)
 					return result, artikel_diperiksa, nil
@@ -50,7 +58,7 @@ func IDS(startURL string, targetURL string) ([]string, int, int, error) {
 	for depth := 0; time.Since(startTime).Seconds() <= 300; depth++ {
 		visited := make(map[string]bool)
 
-		result, count, err := DLS(startURL, targetURL, depth, visited, []string{startURL})
+		result, count, err := DLS(startURL, targetURL, depth, visited)
 		artikel_diperiksa += count
 		if err != nil {
 			return nil, artikel_diperiksa, 0, err
