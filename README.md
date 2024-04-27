@@ -35,7 +35,7 @@ Pada algoritma IDS, penjelajahan dilakukan dengan melakukan serangkaian DFS sepe
 
 
 ## Dokumentasi <a href="dokumentasi"></a>
-![Example screenshot](src/frontend/src/components/assets/jebir1.gif)
+![Example screenshot](src/img/jebir1.gif)
 
 ## Dependencies <a href="dependencies"></a>
 - Go 
