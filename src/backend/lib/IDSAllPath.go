@@ -7,35 +7,37 @@ import (
 )
 
 func DLSAllPath(URL string, target string, depth int, visited map[string]bool, path []string, visitedPath map[string]bool, allPaths *[][]string, artikelDiperiksa *int) error {
+	if depth == 0  && URL == target{
+		*artikelDiperiksa++
+		newPath := append([]string(nil), path...)
+		pathString := strings.Join(newPath, "->")
+		if !visitedPath[pathString] {
+			visitedPath[pathString] = true
+			*allPaths = append(*allPaths, newPath)
+			return nil
+		}
+	}
+
 	if depth == 0 {
 		*artikelDiperiksa++
-		if URL == target {
-			newPath := append([]string(nil), path...)
-			pathString := strings.Join(newPath, "->")
-			if !visitedPath[pathString] {
-				visitedPath[pathString] = true
-				*allPaths = append(*allPaths, newPath)
-				return nil
-			}
+	}
+
+	if depth > 0 {
+		visited[URL] = true
+		defer delete(visited, URL)
+
+		neighbors, err := scrapeLinks(URL)
+		if err != nil {
+			return err
 		}
 
-		return nil
-	}
-
-	visited[URL] = true
-	defer delete(visited, URL)
-
-	neighbors, err := scrapeLinks(URL)
-	if err != nil {
-		return err
-	}
-
-	for _, neighbor := range neighbors {
-		if !visited[neighbor] {
-			newPath := append(path, neighbor)
-			err := DLSAllPath(neighbor, target, depth-1, visited, newPath, visitedPath, allPaths, artikelDiperiksa)
-			if err != nil {
-				return err
+		for _, neighbor := range neighbors {
+			if !visited[neighbor] {
+				newPath := append(path, neighbor)
+				err := DLSAllPath(neighbor, target, depth-1, visited, newPath, visitedPath, allPaths, artikelDiperiksa)
+				if err != nil {
+					return err
+				}
 			}
 		}
 	}
