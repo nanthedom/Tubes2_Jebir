@@ -14,7 +14,7 @@ func BFSAllPath(start, end string) ([][]string, int, int, error) {
 	clickedArticle := 1
 	var paths [][]string
 	if start == end {
-		path := []string{start, end}
+		path := []string{start}
 		return append(paths, path), checkedArticle, clickedArticle, nil
 	}
 

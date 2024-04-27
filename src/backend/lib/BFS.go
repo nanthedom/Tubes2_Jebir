@@ -11,7 +11,7 @@ func BFS(start, end string) ([]string, int, int, error) {
 
 	checkedArticle := 1
 	if start == end {
-		return []string{start, end}, checkedArticle, 0, nil
+		return []string{start}, checkedArticle, 0, nil
 	}
 	visited := make(map[string]bool)
 	queue := []*Node{{Url: start, Depth: 0}}
