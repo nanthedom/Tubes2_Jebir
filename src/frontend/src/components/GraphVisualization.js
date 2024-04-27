@@ -5,7 +5,7 @@ const GraphVisualization = ({paths, updateTrigger}) => {
     let nodes = [];
     let edges = [];
 
-    if (!paths || paths.length === 0) {
+    if (paths[0] === null) {
         return <div>No path available!</div>;
     }
 
@@ -35,7 +35,7 @@ const GraphVisualization = ({paths, updateTrigger}) => {
         const nodeId = event.nodes[0];
         const clickedNode = nodes.find(node => node.id === nodeId);
         if (clickedNode && clickedNode.url) {
-            window.open(clickedNode.url, '_blank'); // Buka URL di tab baru
+            window.open(clickedNode.url, '_blank');
         }
     };
 

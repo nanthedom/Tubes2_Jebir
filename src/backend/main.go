@@ -41,7 +41,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	fmt.Printf("End Url: %s\n", formData.EndUrl)
 	fmt.Printf("Algoritma: %s\n", formData.Algoritma)
 
-	paths, checkedArticle, clickArticle, excTime, err := backend.MainBackend(formData)
+	paths, countPaths, checkedArticle, clickArticle, excTime, err := backend.MainBackend(formData)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -59,7 +59,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("\nexcTime: ", excTime)
-	fmt.Println("Count Path: ", len(paths))
+	fmt.Println("Count Path: ", countPaths)
 	fmt.Println("Checked Article: ", checkedArticle)
 	fmt.Println("Click Article: ", clickArticle)
 	fmt.Println("done successfully!")
@@ -72,6 +72,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		EndUrl         string     `json:"endUrl"`
 		Algoritma      string     `json:"algoritma"`
 		Paths          [][]string `json:"paths"`
+		CountPaths     int        `json:"countPaths"`
 		CheckedArticle int        `json:"checkedArticle"`
 		ClickArticle   int        `json:"clickArticle"`
 		ExcTime        string     `json:"excTime"`
@@ -83,6 +84,7 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 		EndUrl:         formData.EndUrl,
 		Algoritma:      formData.Algoritma,
 		Paths:          paths,
+		CountPaths:     countPaths,
 		CheckedArticle: checkedArticle,
 		ClickArticle:   clickArticle,
 		ExcTime:        excTime.String(),
