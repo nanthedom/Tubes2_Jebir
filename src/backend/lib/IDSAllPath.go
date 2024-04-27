@@ -26,7 +26,7 @@ func DLSAllPath(URL string, target string, depth int, visited map[string]bool, p
 		visited[URL] = true
 		defer delete(visited, URL)
 
-		neighbors, err := scrapeLinks(URL)
+		neighbors, err := scrapeLinks(URL) //mencari link tetangga
 		if err != nil {
 			return err
 		}
@@ -46,6 +46,11 @@ func DLSAllPath(URL string, target string, depth int, visited map[string]bool, p
 }
 
 func IDSAllPath(startURL string, targetURL string) ([][]string, int, int, error) {
+	//menangani kasus nil
+	if len(startURL) == 0 || len(targetURL) == 0 {
+		return nil, 0, 0, nil
+	}
+
 	artikelDiperiksa := 0
 	allPaths := [][]string{}
 	startTime := time.Now()

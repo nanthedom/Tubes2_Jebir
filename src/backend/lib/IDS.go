@@ -18,7 +18,7 @@ func DLS(URL string, target string, depth int, visited map[string]bool) ([]strin
 
 	if depth > 0 {
 		visited[URL] = true
-		neighbors, err := scrapeLinks(URL)
+		neighbors, err := scrapeLinks(URL) //mencari link tetangga
 		if err != nil {
 			return nil, 0, err
 		}
