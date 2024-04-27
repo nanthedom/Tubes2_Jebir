@@ -7,7 +7,7 @@ import (
 )
 
 func DLSAllPath(URL string, target string, depth int, visited map[string]bool, path []string, visitedPath map[string]bool, allPaths *[][]string, artikelDiperiksa *int) error {
-	if depth == 0  && URL == target{
+	if depth == 0  && URL == target{ //menambahlan kedalam path jika url == target
 		*artikelDiperiksa++
 		newPath := append([]string(nil), path...)
 		pathString := strings.Join(newPath, "->")
@@ -18,7 +18,7 @@ func DLSAllPath(URL string, target string, depth int, visited map[string]bool, p
 		}
 	}
 
-	if depth == 0 {
+	if depth == 0 { //menambahkan artikel diperiksa saat kedalamn 0 (artikel yang baru)
 		*artikelDiperiksa++
 	}
 
@@ -31,7 +31,7 @@ func DLSAllPath(URL string, target string, depth int, visited map[string]bool, p
 			return err
 		}
 
-		for _, neighbor := range neighbors {
+		for _, neighbor := range neighbors { //menerapkan DLS untuk tiap tiap link tetangga
 			if !visited[neighbor] {
 				newPath := append(path, neighbor)
 				err := DLSAllPath(neighbor, target, depth-1, visited, newPath, visitedPath, allPaths, artikelDiperiksa)
@@ -49,8 +49,9 @@ func IDSAllPath(startURL string, targetURL string) ([][]string, int, int, error)
 	artikelDiperiksa := 0
 	allPaths := [][]string{}
 	startTime := time.Now()
-
+	//melakukan pencarian untuk tiap kedalaman
 	for depth := 0; time.Since(startTime).Seconds() <= 300; depth++ {
+		//inisialisasi
 		visited := make(map[string]bool)
 		visitedPath := make(map[string]bool)
 		path := []string{startURL}
@@ -65,5 +66,5 @@ func IDSAllPath(startURL string, targetURL string) ([][]string, int, int, error)
 		}
 	}
 
-	return nil, artikelDiperiksa, 0, fmt.Errorf("Error")
+	return nil, artikelDiperiksa, 0, fmt.Errorf("tidak ditemukan path")
 }
