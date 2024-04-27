@@ -7,7 +7,7 @@
 
 ## Table of Contents
 * [Website Jebir Wikirace](#jebir)
-* [Screenshots](#screenshots)
+* [Dokumentasi](#dokumentasi)
 * [Dependencies](#dependencies)
 * [How to Use](#how-to-use)
 
@@ -31,8 +31,10 @@ Sedangkan IDS (Iterative Deepening Search) menggabungkan DFS dan DLS secara iter
 * backtrack jika sudah mencapai kedalaman maksimal atau semua tetangga telah dikunjungi. 
 * Proses berakhir jika tidak ada simpul yang bisa dikunjungi lagi.
 
+Pada algoritma IDS, penjelajahan dilakukan dengan melakukan serangkaian DFS seperti pada skema di atas, dengan peningkatan nilai kedalaman cut-off, hingga solusi ditemukan
 
-## Screenshots <a href="screenshots"></a>
+
+## Dokumentasi <a href="dokumentasi"></a>
 ![Example screenshot](src/frontend/src/components/assets/jebir1.gif)
 
 ## Dependencies <a href="dependencies"></a>
@@ -57,16 +59,17 @@ Sedangkan IDS (Iterative Deepening Search) menggabungkan DFS dan DLS secara iter
     cd src
     ```
 4. Program ini dapat dijalankan menggunakan docker maupun secara manual. Jika dengan Docker, caranya:
+    * Buka dahulu Docker desktop pada device Anda
     * Pada direktori ini (Tubes2_Jebir/src), ketik 
         ``` 
         docker-compose up 
         ```
-    * Program akan langsung berjalan dan dapat dilihat di browser pada: 
+    * Tunggu hingga build berhasil, program akan langsung berjalan dan dapat diakses di browser pada: 
         ```
         http://localhost:3000/
         ```
     Jika dijalankan secara manual, maka langkahnya adalah:
-    * Masuk ke direktori backend  
+    * Masuk ke direktori backend (Tubes2_Jebir/src/backend)
       ```
       cd backend
       ```
