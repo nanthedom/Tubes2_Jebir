@@ -94,3 +94,5 @@ Pada algoritma IDS, penjelajahan dilakukan dengan melakukan serangkaian DFS sepe
         ```
         http://localhost:3000/
         ```
+5. Setelah berhasil dijalankan, pengguna dapat memasukan artikel yang hendak dicari rutenya, memilih algoritma yang ingin digunakan, dan melihat hasilnya.
+6. Program akan menampilkan rute penjelajahan terpendek antara kedua artikel masukan dalam bentuk visualisasi graf, waktu eksekusinya, jumlah artikel yang diklik untuk mencapai artikel tujuan, dan jumlah artikel yang diperiksanya. Jika rute lebih dari satu maka akan ditampilkan juga jumlah rutenya.
