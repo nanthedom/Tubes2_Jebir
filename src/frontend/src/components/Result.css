@@ -23,8 +23,15 @@
 .article-checked {
     position: absolute;
     text-align: center;
-    top: 30px; 
+    top: 50px;
     right: 20%;
+    color: #524869;
+}
+
+.count-path {
+    position: absolute;
+    text-align: center;
+    top: 30px;
     color: #524869;
 }
 
@@ -32,14 +39,14 @@
     font-size: 10px;
     position: absolute;
     text-align: center;
-    top:10px; 
+    top: 10px;
     color: #524869;
 }
 
 .article-clicked {
     position: absolute;
     text-align: center;
-    top: 30px; 
+    top: 50px;
     left: 20%;
     color: #524869;
 }
@@ -77,6 +84,7 @@
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -92,11 +100,31 @@
 }
 
 @keyframes fadeInOut {
-    0% { opacity: 0; }
-    12.5% { opacity: 0.8; }
-    25% { opacity: 0.9; }
-    50% { opacity: 1; }
-    75% { opacity: 0.9; }
-    87.5% { opacity: 0.8; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    12.5% {
+        opacity: 0.8;
+    }
+
+    25% {
+        opacity: 0.9;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    75% {
+        opacity: 0.9;
+    }
+
+    87.5% {
+        opacity: 0.8;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }

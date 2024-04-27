@@ -11,12 +11,13 @@ const wikipediaFunFacts = [
 ];
 
 const Result = ({ formData, updateTrigger }) => {
+    const [countPath, setCountPath] = useState(0);
     const [checkedArticle, setCheckedArticle] = useState(0);
     const [clickArticle, setClickArticle] = useState(0);
     const [excTime, setExcTime] = useState(0);
     const [paths, setPaths] = useState([]);
-    const [loading, setLoading] = useState(true); 
-    const [funFactIndex, setFunFactIndex] = useState(0); 
+    const [loading, setLoading] = useState(true);
+    const [funFactIndex, setFunFactIndex] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -35,11 +36,12 @@ const Result = ({ formData, updateTrigger }) => {
                     setClickArticle(data.clickArticle);
                     setExcTime(data.excTime);
                     setPaths(data.paths);
-                    setLoading(false); 
+                    setCountPath((data.paths).length);
+                    setLoading(false);
                     console.log('Data fetched successfully:', data);
                 } catch (error) {
                     console.error('Error fetching data:', error);
-                    setLoading(false); 
+                    setLoading(false);
                 }
             }
         };
@@ -53,7 +55,7 @@ const Result = ({ formData, updateTrigger }) => {
             const timer = setInterval(() => {
                 setFunFactIndex(prevIndex => (prevIndex + 1) % wikipediaFunFacts.length);
             }, 6600);
-            return () => clearInterval(timer); 
+            return () => clearInterval(timer);
         }
     }, [loading]);
 
@@ -61,7 +63,7 @@ const Result = ({ formData, updateTrigger }) => {
         <div>
             <h2 className="result-title">Result</h2>
             <div className="result-container">
-                {loading ? ( 
+                {loading ? (
                     <div className="loading-container">
                         <div className="loading-spinner"></div>
                         <div className="fun-fact">{wikipediaFunFacts[funFactIndex]}</div>
@@ -69,16 +71,19 @@ const Result = ({ formData, updateTrigger }) => {
                 ) : (
                     <>
                         <div className="article-checked">
-                            Article checked: {checkedArticle} <br/>
+                            Article checked: {checkedArticle} <br />
+                        </div>
+                        <div className="count-path">
+                            Count path: {countPath} <br />
                         </div>
                         <div className="article-clicked">
                             Article clicked: {clickArticle}
                         </div>
                         <div className="addition">
-                    move node to adjust your view and
-                    click node to visit page!
-                </div>
-                <div className="exc-time">
+                            move node to adjust your view and
+                            click node to visit page!
+                        </div>
+                        <div className="exc-time">
                             Execution time: {excTime}
                         </div>
                         <div className="graph">

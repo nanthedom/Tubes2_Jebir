@@ -59,8 +59,9 @@ func handleInsert(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println("\nexcTime: ", excTime)
-	fmt.Println("checkedArticle: ", checkedArticle)
-	fmt.Println("clickArticle: ", clickArticle)
+	fmt.Println("Count Path: ", len(paths))
+	fmt.Println("Checked Article: ", checkedArticle)
+	fmt.Println("Click Article: ", clickArticle)
 	fmt.Println("done successfully!")
 
 	responseData := struct {
