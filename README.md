@@ -16,10 +16,24 @@
 > Jebir WikiRace adalah sebuah website solver atas permainan WikiRace yang memungkinkan pengguna untuk melakukan pencarian artikel Wikipedia dari artikel awal ke artikel target dengan rute penjelajahan artikel terdekat melalui hipertaut artikel yang ada di dalamnya.
 
 Dalam rangka menemukan rute penjelajahan terpendek, digunakan pendekatan algoritma BFS dan IDS. 
+BFS (Breadth-First Search) adalah metode penjelajahan graf yang dimulai dari simpul awal dan berlanjut ke tetangga-tetangga dari simpul tersebut sebelum menjelajahi simpul yang lebih jauh. Dalam BFS, struktur data queue digunakan untuk menyimpan simpul-simpul yang akan dikunjungi. Algoritma ini memastikan bahwa simpul-simpul dikunjungi dalam urutan lebar, memungkinkan penemuan jalur terpendek antara dua simpul pada graf tidak berarah dan tanpa bobot. Langkah pada BFS (simpul adalah artikel wikipedia):
+* Kunjungi simpul awal.
+* Kunjungi seluruh tetangga dari simpul awal terlebih dahulu.
+* Kunjungi simpul-simpul yang belum dikunjungi dan bertetangga dengan simpul-simpul yang telah dikunjungi sebelumnya.
+* Ulangi langkah-langkah tersebut hingga seluruh simpul pada graf telah dikunjungi.
+
+
+
+Sedangkan IDS (Iterative Deepening Search) menggabungkan DFS dan DLS secara iteratif untuk menggabungkan keuntungan efisiensi memori DFS dan jaminan solusi dalam kedalaman tertentu dari DLS. Namun, IDS tidak selalu efisien dalam graf dengan cabang yang panjang. DLS mirip dengan DFS tetapi dengan batasan kedalaman l. Prosesnya: 
+* kunjungi simpul v, 
+* kunjungi tetangga simpul v, 
+* ulangi DFS dari tetangga,  
+* backtrack jika sudah mencapai kedalaman maksimal atau semua tetangga telah dikunjungi. 
+* Proses berakhir jika tidak ada simpul yang bisa dikunjungi lagi.
 
 
 ## Screenshots <a href="screenshots"></a>
-![Example screenshot](todo.gif)
+![Example screenshot](src/frontend/src/components/assets/jebir1.gif)
 
 ## Dependencies <a href="dependencies"></a>
 - Go 
@@ -30,76 +44,50 @@ Dalam rangka menemukan rute penjelajahan terpendek, digunakan pendekatan algorit
 0. Siapkan requirement jika belum di-install:
     - Node.js (https://nodejs.org/en) 
     - Docker desktop (https://www.docker.com/products/docker-desktop/) 
+    - Go Lang (https://go.dev/doc/install)
     - Yarn
 
-1. Download source code (.zip) pada link berikut:
+1. Clone repository ini pada link berikut:
     ```
-    https://github.com/haziqam/tubes1-IF2211-game-engine/releases/tag/v1.1.0
+    https://github.com/nanthedom/Tubes2_Jebir.git
     ```
-2. Extract zip tersebut, lalu masuk ke folder hasil extractnya dan buka terminal
-3. Masuk ke root directory dari project (sesuaikan dengan nama rilis terbaru)
+2. Masuk ke folder hasil clone dan buka terminal
+3. Masuk ke folder src 
     ```
-    cd tubes1-IF2211-game-engine-1.1.0
+    cd src
     ```
-4. Install dependencies menggunakan Yarn
-    ```
-    yarn
-    ```
-5. Setup default environment variable dengan menjalankan script berikut
-Untuk Windows
-    ```
-    ./scripts/copy-env.bat
-    ```
-    Untuk Linux / (possibly) macOS
-    ```
-    chmod +x ./scripts/copy-env.sh
-    ./scripts/copy-env.sh
-    ```
-6. Setup local database (buka aplikasi docker desktop terlebih dahulu, lalu jalankan command berikut di terminal)
-    ```
-    docker compose up -d database
-    ```
-    Lalu jalankan script berikut. Untuk Windows
-    ```
-    ./scripts/setup-db-prisma.bat
-    ```
-    Untuk Linux / (possibly) macOS
-    ```
-    chmod +x ./scripts/setup-db-prisma.sh
-    ./scripts/setup-db-prisma.sh
-    ```
-7. Jika sudah, lakukan build kemudian run untuk menjalankan website
-    ```
-    npm run build
-    ```
-    ```
-    npm run start
-    ```
-    Kunjungi frontend melalui `http://localhost:8082/`.
-8. Untuk menjalankan bot, clone repository ini dengan
-    ```
-    git clone https://github.com/TazakiN/Tubes1_Nanang-Boneng.git
-    ```
-9. Masuk ke src directory dari project 
-    ```
-    cd Tubes1_Nanang-Boneng/src
-    ```
-10. Install dependencies menggunakan pip
-    ```
-    pip install -r requirjements.txt
-    ```
-11. Run bot di dalam direktori src dengan:
-    - hanya 1 bot:
-    ```
-    python main.py --logic NanangBoneng --email=nanang_boneng_2@example.com --name=nanang --password=nanang_final_password --team etimo    
-    ```
-    - lebih dari 1 bot bersamaan (windows):
-    ```
-    ./run-bots.bat
-    ```
-    - lebih dari 1 bot bersamaan (linux/macOS):
-    ```
-    ./run-bots.sh
-    ```
-    sesuaikan script pada  `run-bots` tersebut
-
+4. Program ini dapat dijalankan menggunakan docker maupun secara manual. Jika dengan Docker, caranya:
+    * Pada direktori ini (Tubes2_Jebir/src), ketik 
+        ``` 
+        docker-compose up 
+        ```
+    * Program akan langsung berjalan dan dapat dilihat di browser pada: 
+        ```
+        http://localhost:3000/
+        ```
+    Jika dijalankan secara manual, maka langkahnya adalah:
+    * Masuk ke direktori backend  
+      ```
+      cd backend
+      ```
+      pastikan direktori sekarang berada pada `Tubes2_Jebir/src/backend`
+    * Jalankan backend dengan mengetik:
+      ```
+      go run main.go
+      ```
+    * Buka terminal baru, masuk ke direktori frontend dengan:
+      ```
+      cd src/frontend
+      ```
+    * Install semua depedencies dengan:
+      ```
+      npm install
+      ```
+    * Jalankan frontend dengan:
+      ```
+      npm start
+      ```
+    * Program sudah berjalan dan dapat diakses di browser melalui:
+        ```
+        http://localhost:3000/
+        ```
