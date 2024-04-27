@@ -19,7 +19,7 @@ type Node struct {
 	Prev  *Node
 }
 
-func MainBackend(data FormData) ([][]string, int, int, time.Duration, error) {
+func MainBackend(data FormData) ([][]string, int, int, int, time.Duration, error) {
 	var paths [][]string
 	var checkedArticle int
 	var clickArticle int
@@ -34,7 +34,7 @@ func MainBackend(data FormData) ([][]string, int, int, time.Duration, error) {
 		paths = append(paths, path)
 		excTime = time.Since(startTime)
 		if err != nil {
-			return nil, 0, 0, 0, err
+			return nil, 0, 0, 0, 0, err
 		}
 
 	} else if data.Algoritma == "BFS All Path" {
@@ -43,7 +43,7 @@ func MainBackend(data FormData) ([][]string, int, int, time.Duration, error) {
 		paths, checkedArticle, clickArticle, err = BFSAllPath(data.StartUrl, data.EndUrl)
 		excTime = time.Since(startTime)
 		if err != nil {
-			return nil, 0, 0, 0, err
+			return nil, 0, 0, 0, 0, err
 		}
 
 	} else if data.Algoritma == "IDS" {
@@ -54,7 +54,7 @@ func MainBackend(data FormData) ([][]string, int, int, time.Duration, error) {
 		paths = append(paths, path)
 		excTime = time.Since(startTime)
 		if err != nil {
-			return nil, 0, 0, 0, err
+			return nil, 0, 0, 0, 0, err
 		}
 
 	} else {
@@ -63,9 +63,16 @@ func MainBackend(data FormData) ([][]string, int, int, time.Duration, error) {
 		paths, checkedArticle, clickArticle, err = IDSAllPath(data.StartUrl, data.EndUrl)
 		excTime = time.Since(startTime)
 		if err != nil {
-			return nil, 0, 0, 0, err
+			return nil, 0, 0, 0, 0, err
 		}
 	}
 
-	return paths, checkedArticle, clickArticle, excTime, nil
+	var count int
+	if len(paths) == 0 || len(paths[0]) == 0 {
+		count = 0
+	} else {
+		count = len(paths)
+	}
+
+	return paths, count, checkedArticle, clickArticle, excTime, nil
 }

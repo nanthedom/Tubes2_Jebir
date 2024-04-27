@@ -36,7 +36,7 @@ const Result = ({ formData, updateTrigger }) => {
                     setClickArticle(data.clickArticle);
                     setExcTime(data.excTime);
                     setPaths(data.paths);
-                    setCountPath((data.paths).length);
+                    setCountPath(data.countPaths);
                     setLoading(false);
                     console.log('Data fetched successfully:', data);
                 } catch (error) {
@@ -87,7 +87,7 @@ const Result = ({ formData, updateTrigger }) => {
                             Execution time: {excTime}
                         </div>
                         <div className="graph">
-                            <GraphVisualization paths={paths} />
+                            <GraphVisualization paths={paths} updateTrigger={updateTrigger}/>
                         </div>
                     </>
                 )}
