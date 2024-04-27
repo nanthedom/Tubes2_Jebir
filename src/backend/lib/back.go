@@ -36,6 +36,16 @@ func MainBackend(data FormData) ([][]string, int, int, int, time.Duration, error
 		if err != nil {
 			return nil, 0, 0, 0, 0, err
 		}
+	} else if data.Algoritma == "BFS-concurrency" {
+		fmt.Println("\nRute BFS-concurrency")
+		startTime := time.Now()
+		var path []string
+		path, checkedArticle, clickArticle, err = BFSgorut(data.StartUrl, data.EndUrl)
+		paths = append(paths, path)
+		excTime = time.Since(startTime)
+		if err != nil {
+			return nil, 0, 0, 0, 0, err
+		}
 
 	} else if data.Algoritma == "BFS All Path" {
 		fmt.Println("\nAll Path BFS")
